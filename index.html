@@ -1,8 +1,18 @@
-<h1>Do It  Now </h1>
-<input id="todo-input" placeholder="Add a task">
-<button onclick="addTodo()">Add</button>
-
-<ul id="todo-list"></ul>
-<p>Tasks: <span id="counter">0</span></p>
-
-<script src="scripts/todo.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do List</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+    <div class="todo-container">
+        <h2>My Tasks</h2>
+        <div class="input-group">
+            <input type="text" id="todo-input" placeholder="Add a new task...">
+            <button id="add-btn">Add</button>
+        </div>
+        <ul id="todo-list"></ul>
+    </div>
+    <script src="main.js"></script> </body>
+</html>

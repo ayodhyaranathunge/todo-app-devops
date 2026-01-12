@@ -1,30 +1,16 @@
-// Elements
-const input = document.getElementById("todo-input");
-const list = document.getElementById("todo-list");
-const counter = document.getElementById("counter");
+const input = document.getElementById('todo-input');
+const addBtn = document.getElementById('add-btn');
+const todoList = document.getElementById('todo-list');
 
-// Update task counter
-function updateCounter() {
-  counter.textContent = list.children.length;
-}
-
-// Add a new task
-function addTodo() {
-  if (!input.value.trim()) return; // ignore empty tasks
-
-  const li = document.createElement("li");
-  li.textContent = input.value;
-
-  // Click → mark completed
-  li.addEventListener("click", () => li.classList.toggle("completed"));
-
-  // Double click → delete
-  li.addEventListener("dblclick", () => {
-    li.remove();
-    updateCounter();
-  });
-
-  list.appendChild(li);
-  input.value = "";
-  updateCounter();
-}
+addBtn.addEventListener('click', () => {
+    if (input.value.trim() !== "") {
+        const li = document.createElement('li');
+        li.innerHTML = `${input.value} <span class="delete-btn">X</span>`;
+        todoList.appendChild(li);
+        input.value = "";
+        
+        li.querySelector('.delete-btn').addEventListener('click', () => {
+            li.remove();
+        });
+    }
+});
