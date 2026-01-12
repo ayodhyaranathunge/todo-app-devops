@@ -3,22 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern To-Do List</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="src/styles/style.css">
+    <title>Modern Task Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="mobile-frame">
-        <div class="header">
-            <h1>Tasks</h1>
-            <p id="task-count">0 of 0 Tasks</p>
-        </div>
-        <div class="input-container">
-            <input type="text" id="todo-input" placeholder="Add a new task...">
+    <div class="app-shell">
+        <header>
+            <div class="header-content">
+                <h1>Task Dashboard</h1>
+                <p id="task-count">0 of 0 Tasks Completed</p>
+            </div>
+            <div class="user-avatar"></div>
+        </header>
+
+        <div class="input-card">
+            <input type="text" id="todo-input" placeholder="Create your categorized task...">
             <button id="add-btn">+</button>
         </div>
-        <ul id="todo-list"></ul>
+
+        <nav class="filter-bar">
+            <button class="filter-item active" data-filter="all">All</button>
+            <button class="filter-item" data-filter="active">Active</button>
+            <button class="filter-item" data-filter="completed">Done</button>
+        </nav>
+
+        <main id="todo-list" class="task-list"></main>
     </div>
-    <script src="src/styles/script/main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
