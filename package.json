@@ -1,0 +1,9 @@
+{
+  "name": "devops-assignment",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "mkdir -p dist && cp src/index.html dist/",
+    "test": "echo 'No tests specified'",
+    "lint": "echo 'No lint specified'"
+  }
+}
