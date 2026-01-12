@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+    <div class="mobile-frame login-screen">
+        <div class="login-decor">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+        </div>
+        
+        <div class="login-content">
+            <h1 class="welcome-text">Welcome <br>Back!</h1>
+            <p class="sub-text">Log in to manage your daily tasks effectively.</p>
+
+            <form id="login-form" class="form-container">
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-btn">LOG IN</button>
+            </form>
+
+            <div class="login-footer">
+                <p>Don't have an account? <span class="sign-up">Sign Up</span></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // සරල Login Logic එකක් - Login වූ පසු Home Page එකට (index.html) රැගෙන යයි
+        document.getElementById('login-form').onsubmit = (e) => {
+            e.preventDefault();
+            window.location.href = "index.html"; 
+        };
+    </script>
+</body>
+</html>

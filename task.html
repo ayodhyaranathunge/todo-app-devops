@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tasks - Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+    <div class="mobile-frame">
+        <header class="top-nav">
+            <a href="index.html" style="text-decoration: none; font-size: 20px;">←</a>
+            <h2 style="margin: 0; font-size: 20px;">Manage Tasks</h2>
+            <div class="menu-btn">☰</div>
+        </header>
+
+        <div class="input-card" style="margin-top: 20px;">
+            <input type="text" id="todo-input" placeholder="Enter your task here...">
+            <button id="add-btn" class="main-add-btn">+</button>
+        </div>
+
+        <div class="filter-container">
+            <button class="filter-tab active" data-filter="all">All</button>
+            <button class="filter-tab" data-filter="active">Active</button>
+            <button class="filter-tab" data-filter="done">Completed</button>
+        </div>
+
+        <div class="task-stats">
+            <span id="task-count">0 tasks total</span>
+        </div>
+
+        <div id="todo-list" class="task-grid" style="display: block; overflow-y: auto;">
+            </div>
+    </div>
+
+    <div id="side-menu" class="side-menu">
+        <div class="menu-header">
+            <div class="user-profile-circle"></div>
+            <h4>User Name</h4>
+        </div>
+        <nav class="menu-links">
+            <a href="index.html">🏠 Home</a>
+            <a href="tasks.html">✅ Tasks</a>
+            <a href="settings.html">⚙️ Settings</a>
+        </nav>
+    </div>
+    <div id="menu-overlay" class="menu-overlay"></div>
+
+    <script src="src/styles/script/main.js"></script>
+</body>
+</html>

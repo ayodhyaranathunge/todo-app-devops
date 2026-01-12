@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+    <div class="mobile-frame signup-screen">
+        <div class="login-decor">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+        </div>
+        
+        <div class="login-content">
+            <h1 class="welcome-text">Create <br>Account</h1>
+            <p class="sub-text">Join us to organize your tasks beautifully.</p>
+
+            <form id="signup-form" class="form-container">
+                <div class="input-group">
+                    <input type="text" id="fullname" placeholder="Full Name" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-btn">SIGN UP</button>
+            </form>
+
+            <div class="login-footer">
+                <p>Already have an account? <a href="login.html" style="color: #ff7675; text-decoration: none; font-weight: 600;">Log In</a></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('signup-form').onsubmit = (e) => {
+            e.preventDefault();
+            // සාර්ථකව Sign Up වූ පසු Login පිටුවට රැගෙන යයි
+            window.location.href = "login.html"; 
+        };
+    </script>
+</body>
+</html>

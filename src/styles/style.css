@@ -1,80 +1,220 @@
-:root {
-    --primary: #4169e1;
-    --bg: #f5f7fb;
-    --card: #ffffff;
-    --text: #1a1a1a;
-    --sub-text: #8e8e93;
-    --success: #34c759;
-}
-
+* { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 body {
-    background: var(--bg);
-    font-family: 'Inter', sans-serif;
+    background-color: #f4f7fc;
     display: flex; justify-content: center; align-items: center;
-    height: 100vh; margin: 0; color: var(--text);
+    height: 100vh; margin: 0;
 }
 
-.app-shell {
-    background: var(--card);
-    width: 380px; height: 750px;
-    border-radius: 40px; padding: 35px 25px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+.mobile-frame {
+    background: #ffffff; width: 360px; height: 740px;
+    border-radius: 40px; padding: 25px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    display: flex; flex-direction: column; 
+    overflow: hidden; /* මේ මගින් Menu එක frame එකෙන් පිටත පෙනීම නවත්වයි */
+    position: relative; /* මේ මගින් Menu එක frame එක ඇතුළට සීමා කරයි */
+}
+
+/* Nav & Header */
+.top-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.avatars-group { display: flex; align-items: center; }
+.mini-avatar { width: 25px; height: 25px; border-radius: 50%; background: #ddd; border: 2px solid white; margin-left: -8px; }
+.plus-count { font-size: 10px; color: white; background: #6c5ce7; padding: 3px 6px; border-radius: 10px; margin-left: -5px; }
+.main-add-btn { background: #ff7675; color: white; border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 18px; cursor: pointer; }
+
+.date-header { margin-bottom: 20px; }
+.month-text { color: #3498db; font-size: 12px; margin: 0; font-weight: 600; }
+.current-date { font-size: 24px; margin: 5px 0 0 0; color: #2d3436; }
+
+/* Calendar */
+.calendar-scroll { display: flex; gap: 15px; margin-bottom: 25px; overflow-x: auto; padding-bottom: 10px; }
+.cal-day { 
+    min-width: 85px; padding: 15px; border-radius: 15px; 
+    text-align: center; background: #f9f9f9; border: 1px solid #f0f0f0;
+}
+.cal-day.active { background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.cal-day span { display: block; font-size: 24px; font-weight: 600; }
+.cal-day small { font-size: 8px; color: #aaa; text-transform: uppercase; }
+
+/* Hero Card */
+.hero-card {
+    background: #3c40c6; border-radius: 20px; padding: 25px;
+    color: white; margin-bottom: 25px; position: relative;
+    overflow: hidden;
+}
+.hero-content h3 { font-size: 16px; margin: 10px 0 15px 0; }
+.get-started { background: #ff7675; color: white; border: none; padding: 8px 15px; border-radius: 8px; font-size: 10px; font-weight: 600; cursor: pointer; }
+
+/* Status Row */
+.status-row { display: flex; gap: 15px; margin-bottom: 20px; }
+.status-chip { 
+    flex: 1; padding: 8px 15px; border-radius: 20px; 
+    font-size: 10px; font-weight: 600; display: flex; justify-content: space-between; align-items: center;
+}
+.status-chip.blue { background: #e3f2fd; color: #1e88e5; }
+.status-chip.orange { background: #fff3e0; color: #f4511e; }
+.status-chip span { background: rgba(0,0,0,0.1); padding: 2px 8px; border-radius: 10px; }
+
+/* Input Card */
+.input-card input {
+    width: 100%; padding: 12px; border: 1px solid #eee;
+    border-radius: 12px; margin-bottom: 20px; outline: none; background: #fafafa;
+}
+
+/* Task Grid */
+.task-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; overflow-y: auto; flex: 1; }
+.task-item {
+    background: #fff; padding: 15px; border-radius: 15px;
+    border-left: 5px solid #3498db; box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    cursor: pointer; transition: 0.3s;
+}
+.task-item.done { opacity: 0.5; border-color: #2ecc71; }
+.task-item h4 { margin: 0; font-size: 12px; font-weight: 600; color: #333; }
+.task-item p { margin: 5px 0 0 0; font-size: 8px; color: #888; }
+
+/* Sidebar Menu Styles */
+.side-menu {
+    position: absolute; top: 0; 
+    left: -100%; /* Frame එකට සාපේක්ෂව වමට හංගයි */
+    width: 260px; height: 100%; background: #3c40c6;
+    z-index: 1000; transition: 0.4s ease;
+    padding: 40px 20px; color: white;
+}
+
+.side-menu.active { left: 0; } /* Frame එක ඇතුළත පෙන්වයි */
+
+.menu-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4); z-index: 999;
+    display: none;
+}
+
+.menu-overlay.active { display: block; }
+
+.user-profile-circle {
+    width: 70px; height: 70px; background: #fff;
+    border-radius: 20px; margin-bottom: 15px;
+}
+
+.menu-links { margin-top: 40px; display: flex; flex-direction: column; gap: 20px; }
+.menu-links a {
+    color: white; text-decoration: none; font-size: 16px;
+    padding: 10px; border-radius: 10px; transition: 0.3s;
+}
+.menu-links a:hover { background: rgba(255,255,255,0.1); }
+.menu-footer { position: absolute; bottom: 30px; font-size: 10px; opacity: 0.5; }
+
+/* Login & Signup Styles */
+.login-screen, .signup-screen {
+    position: relative; background: #fff;
+    justify-content: center; overflow: hidden;
     display: flex; flex-direction: column;
-    position: relative;
 }
 
-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-h1 { font-size: 24px; font-weight: 600; margin: 0; }
-#task-count { font-size: 13px; color: var(--sub-text); margin: 5px 0 0 0; }
-.user-avatar { width: 40px; height: 40px; border-radius: 50%; background: #ddd; }
-
-.input-card {
-    background: #f0f2f8; border-radius: 20px;
-    padding: 8px 8px 8px 18px; display: flex; align-items: center;
-    margin-bottom: 25px; transition: 0.3s;
+.login-decor .circle-1 {
+    position: absolute; width: 250px; height: 250px;
+    background: #3c40c6; border-radius: 50%;
+    top: -80px; left: -50px; opacity: 0.1;
 }
 
-.input-card:focus-within { background: #fff; box-shadow: 0 0 0 2px var(--primary); }
-
-input {
-    border: none; background: transparent; flex: 1;
-    font-size: 14px; outline: none; color: var(--text);
+.login-decor .circle-2 {
+    position: absolute; width: 150px; height: 150px;
+    background: #ff7675; border-radius: 50%;
+    bottom: -30px; right: -30px; opacity: 0.1;
 }
 
-#add-btn {
-    background: var(--primary); color: white; border: none;
-    width: 40px; height: 40px; border-radius: 15px;
-    font-size: 20px; cursor: pointer; transition: 0.2s;
+.welcome-text { font-size: 32px; color: #2d3436; margin-bottom: 10px; line-height: 1.2; }
+.sub-text { color: #888; font-size: 13px; margin-bottom: 40px; }
+.form-container { display: flex; flex-direction: column; gap: 15px; }
+
+.input-group input {
+    width: 100%; padding: 15px 20px;
+    border: 1px solid #f0f0f0; border-radius: 15px;
+    background: #f9f9f9; outline: none; font-size: 14px;
 }
 
-.filter-bar { display: flex; gap: 10px; margin-bottom: 25px; }
-.filter-item {
-    border: none; background: #f0f2f8; padding: 8px 18px;
-    border-radius: 20px; font-size: 13px; cursor: pointer;
-    color: var(--sub-text); transition: 0.3s;
+.login-btn {
+    background: #3c40c6; color: white; border: none;
+    padding: 15px; border-radius: 15px; font-weight: 600;
+    margin-top: 20px; cursor: pointer; transition: 0.3s;
 }
-.filter-item.active { background: var(--primary); color: white; }
+.login-btn:hover { background: #575fcf; transform: translateY(-2px); }
+.login-footer { text-align: center; margin-top: 30px; font-size: 12px; color: #aaa; }
+.sign-up { color: #ff7675; font-weight: 600; cursor: pointer; }
 
-.task-list { flex: 1; overflow-y: auto; padding-right: 5px; }
-.task-list::-webkit-scrollbar { width: 0; }
+/* Settings Page Styles */
+.settings-screen { background: #fdfdfd; }
+.settings-header { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+.back-btn { text-decoration: none; color: #333; font-size: 24px; font-weight: 600; }
+.settings-header h2 { font-size: 20px; margin: 0; }
 
-.task-card {
-    background: white; border: 1px solid #f0f0f0;
-    padding: 18px; border-radius: 22px; margin-bottom: 15px;
-    display: flex; align-items: center; gap: 15px;
-    transition: transform 0.2s, box-shadow 0.2s;
+.profile-preview {
+    display: flex; align-items: center; gap: 20px;
+    padding: 20px; background: #fff; border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02); margin-bottom: 30px;
+}
+.user-avatar-large { width: 60px; height: 60px; background: #3c40c6; border-radius: 20px; }
+.user-info h4 { margin: 0; font-size: 16px; }
+.user-info p { margin: 5px 0 0 0; font-size: 12px; color: #aaa; }
+
+.settings-options { display: flex; flex-direction: column; gap: 10px; }
+.option-item {
+    display: flex; align-items: center; padding: 15px 20px;
+    background: #fff; border-radius: 18px; border: 1px solid #f9f9f9;
+    cursor: pointer; transition: 0.3s;
+}
+.option-item:hover { background: #fcfcfc; transform: translateX(5px); }
+.option-icon { font-size: 18px; margin-right: 15px; }
+.option-text { flex: 1; font-size: 14px; font-weight: 400; color: #333; }
+.arrow { color: #ccc; font-size: 20px; }
+
+.option-toggle {
+    width: 40px; height: 22px; background: #eee;
+    border-radius: 20px; position: relative;
+    transition: 0.3s;
+}
+.option-toggle::before {
+    content: ''; position: absolute; width: 16px; height: 16px;
+    background: #fff; border-radius: 50%; top: 3px; left: 3px;
+    transition: 0.3s;
 }
 
-.task-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.04); }
+/* ========================================== */
+/* Dark Mode & Toggle Logic (Working Part)    */
+/* ========================================== */
 
-.check-circle {
-    width: 24px; height: 24px; border: 2.5px solid #e0e0e0;
-    border-radius: 50%; cursor: pointer; transition: 0.3s;
+/* Dark Theme සක්‍රීය වූ විට මුළු App එකේම වර්ණ වෙනස් වීම */
+body.dark-theme { background-color: #1a1a2e !important; color: #fff !important; }
+body.dark-theme .mobile-frame { background-color: #16213e !important; color: #fff; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+body.dark-theme .task-item, body.dark-theme .option-item, body.dark-theme .input-card input, body.dark-theme .profile-preview { background: #0f3460 !important; color: #fff !important; border-color: #1a1a2e !important; }
+body.dark-theme h1, body.dark-theme h2, body.dark-theme h4, body.dark-theme .option-text { color: #ffffff !important; }
+body.dark-theme .sub-text, body.dark-theme .month-text { color: #4169e1 !important; }
+
+/* Toggle Button එක Active (Green) වූ විට */
+.option-toggle.active { background: #34c759 !important; }
+.option-toggle.active::before { left: 21px !important; }
+
+/* Filter Styling */
+.filter-container { display: flex; gap: 10px; margin: 20px 0; }
+.filter-tab {
+    flex: 1; border: none; background: #f0f2f5; padding: 10px;
+    border-radius: 12px; font-size: 11px; font-weight: 600; cursor: pointer;
+    transition: 0.3s; color: #888;
 }
+.filter-tab.active { background: #3c40c6; color: white; }
 
-.task-card.completed .check-circle { background: var(--success); border-color: var(--success); }
-.task-card.completed .task-text { text-decoration: line-through; color: var(--sub-text); }
+.task-stats { font-size: 12px; color: #aaa; margin-bottom: 15px; }
 
-.task-text { flex: 1; font-size: 15px; font-weight: 400; }
-.delete-action { color: #ff3b30; cursor: pointer; opacity: 0; transition: 0.3s; }
-.task-card:hover .delete-action { opacity: 1; }
+/* Individual Task Item */
+.task-row {
+    background: white; padding: 15px; border-radius: 18px;
+    margin-bottom: 10px; display: flex; align-items: center;
+    border-left: 4px solid #3c40c6; box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+.task-row.done { opacity: 0.5; border-left-color: #2ecc71; }
+.task-row h4 { flex: 1; margin: 0; font-size: 14px; }
+.task-row .delete-icon { color: #ff7675; cursor: pointer; padding-left: 10px; }
+
+/* Dark Mode Task Overrides */
+body.dark-theme .task-row { background: #0f3460 !important; color: white; }
+body.dark-theme .filter-tab { background: #0f3460; color: #fff; }

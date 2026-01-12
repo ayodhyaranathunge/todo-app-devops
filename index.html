@@ -3,33 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Task Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Task Manager Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/style.css">
 </head>
 <body>
-    <div class="app-shell">
-        <header>
-            <div class="header-content">
-                <h1>Task Dashboard</h1>
-                <p id="task-count">0 of 0 Tasks Completed</p>
+    <div class="mobile-frame">
+        <div id="side-menu" class="side-menu">
+            <div class="menu-header">
+                <div class="user-profile-circle"></div>
+                <h4>User Name</h4>
             </div>
-            <div class="user-avatar"></div>
-        </header>
+            <nav class="menu-links">
+                <a href="index.html">🏠 Home</a>
+                <a href="login.html">🔑 Login</a>
+                <a href="signup.html">📝 Sign Up</a>
+                <a href="Task.html">🗓️ Task</a>
+                <a href="setting.html">⚙️ Settings</a>
 
-        <div class="input-card">
-            <input type="text" id="todo-input" placeholder="Create your categorized task...">
-            <button id="add-btn">+</button>
+            </nav>
+            <div class="menu-footer">Task Manager v1.0</div>
         </div>
 
-        <nav class="filter-bar">
-            <button class="filter-item active" data-filter="all">All</button>
-            <button class="filter-item" data-filter="active">Active</button>
-            <button class="filter-item" data-filter="completed">Done</button>
-        </nav>
+        <div id="menu-overlay" class="menu-overlay"></div>
 
-        <main id="todo-list" class="task-list"></main>
+        <header class="top-nav">
+            <div class="menu-btn">☰</div>
+            <div class="nav-right">
+                <div class="avatars-group">
+                    <div class="mini-avatar"></div>
+                    <div class="mini-avatar"></div>
+                    <div class="plus-count">+5</div>
+                </div>
+                <button id="add-btn" class="main-add-btn">+</button>
+            </div>
+        </header>
+
+        <div class="date-header">
+            <p class="month-text">Month</p>
+            <h2 class="current-date">September 2019</h2>
+        </div>
+
+        <div class="calendar-scroll">
+            <div class="cal-day active"><span>8</span><small>MONDAY</small></div>
+            <div class="cal-day"><span>9</span><small>TUESDAY</small></div>
+            <div class="cal-day"><span>10</span><small>WEDNESS</small></div>
+            <div class="cal-day"><span>11</span><small>THU</small></div>
+        </div>
+
+        <div class="hero-card">
+            <div class="hero-content">
+                <small>Dealing With</small>
+                <h3>Technical Support 10 Useful Tips</h3>
+                <button class="get-started">GET STARTED</button>
+            </div>
+            <div class="hero-shapes">
+                <div class="shape s1"></div>
+                <div class="shape s2"></div>
+            </div>
+        </div>
+
+        <div class="status-row">
+            <div class="status-chip blue">Tasks Needed <span>34</span></div>
+            <div class="status-chip orange">Waiting <span>28</span></div>
+        </div>
+
+        <div class="input-card">
+            <input type="text" id="todo-input" placeholder="Plan your next task...">
+        </div>
+
+        <main id="todo-list" class="task-grid"></main>
     </div>
-    <script src="main.js"></script>
+
+    <script src="src/styles/script/main.js"></script>
 </body>
 </html>
