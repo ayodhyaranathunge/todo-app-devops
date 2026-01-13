@@ -3,78 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Task Manager - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/styles/style.css">
 </head>
 <body>
     <div class="mobile-frame">
+        <header class="home-header">
+            <h1 class="do-it-now">DO IT NOW</h1>
+            <div class="top-nav">
+                <div class="menu-btn">☰</div>
+                <div class="nav-right">
+                    <div class="avatars-group">
+                        <div class="mini-avatar"></div>
+                        <div class="plus-count">+5</div>
+                    </div>
+                    <button class="main-add-btn" onclick="location.href='tasks.html'">+</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="home-content">
+            <div class="date-header">
+                <p class="month-text">JANUARY 2026</p>
+                <h2 class="current-date">Dealing With Tasks</h2>
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-content">
+                    <h3>Technical Support 10 Useful Tips</h3>
+                    <button class="get-started" onclick="location.href='tasks.html'">GET STARTED</button>
+                </div>
+            </div>
+
+            <div class="status-row">
+                <div class="status-chip blue">Tasks Needed <span>34</span></div>
+                <div class="status-chip orange">Waiting <span>28</span></div>
+            </div>
+
+            <div id="todo-list" class="home-task-list">
+                </div>
+        </main>
+
+        <footer class="footer-nav">
+            <a href="index.html" class="nav-item active">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">Home</span>
+            </a>
+            <a href="tasks.html" class="nav-item">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">Tasks</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Profile</span>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Settings</span>
+            </a>
+        </footer>
+
         <div id="side-menu" class="side-menu">
             <div class="menu-header">
                 <div class="user-profile-circle"></div>
                 <h4>User Name</h4>
             </div>
             <nav class="menu-links">
-                <a href="index.html">🏠 Home</a>
-                <a href="login.html">🔑 Login</a>
-                <a href="signup.html">📝 Sign Up</a>
-                <a href="Task.html">🗓️ Task</a>
-                <a href="setting.html">⚙️ Settings</a>
-
+                <a href="index.html">Home</a>
+                <a href="tasks.html">Tasks</a>
+                <a href="settings.html">Settings</a>
             </nav>
-            <div class="menu-footer">Task Manager v1.0</div>
         </div>
-
         <div id="menu-overlay" class="menu-overlay"></div>
-
-        <header class="top-nav">
-            <div class="menu-btn">☰</div>
-            <div class="nav-right">
-                <div class="avatars-group">
-                    <div class="mini-avatar"></div>
-                    <div class="mini-avatar"></div>
-                    <div class="plus-count">+5</div>
-                </div>
-                <button id="add-btn" class="main-add-btn">+</button>
-            </div>
-        </header>
-
-        <div class="date-header">
-            <p class="month-text">Month</p>
-            <h2 class="current-date">September 2019</h2>
-        </div>
-
-        <div class="calendar-scroll">
-            <div class="cal-day active"><span>8</span><small>MONDAY</small></div>
-            <div class="cal-day"><span>9</span><small>TUESDAY</small></div>
-            <div class="cal-day"><span>10</span><small>WEDNESS</small></div>
-            <div class="cal-day"><span>11</span><small>THU</small></div>
-        </div>
-
-        <div class="hero-card">
-            <div class="hero-content">
-                <small>Dealing With</small>
-                <h3>Technical Support 10 Useful Tips</h3>
-                <button class="get-started">GET STARTED</button>
-            </div>
-            <div class="hero-shapes">
-                <div class="shape s1"></div>
-                <div class="shape s2"></div>
-            </div>
-        </div>
-
-        <div class="status-row">
-            <div class="status-chip blue">Tasks Needed <span>34</span></div>
-            <div class="status-chip orange">Waiting <span>28</span></div>
-        </div>
-
-        <div class="input-card">
-            <input type="text" id="todo-input" placeholder="Plan your next task...">
-        </div>
-
-        <main id="todo-list" class="task-grid"></main>
     </div>
-
     <script src="src/styles/script/main.js"></script>
 </body>
 </html>

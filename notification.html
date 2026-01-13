@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+    <div class="mobile-frame notification-screen">
+        <div class="login-decor">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+        </div>
+
+        <header class="notif-header">
+            <h2>Notifications</h2>
+            <div class="settings-icon-top" onclick="location.href='settings.html'">⚙️</div>
+        </header>
+
+        <main class="notification-list scrollable-area" id="notif-container">
+            </main>
+
+        <footer class="footer-nav-square">
+            <a href="index.html" class="nav-item">
+                <span>🏠</span>
+                <small>Home</small>
+            </a>
+            <a href="tasks.html" class="nav-item">
+                <span>📋</span>
+                <small>Tasks</small>
+            </a>
+            <a href="notifications.html" class="nav-item active">
+                <span>🔔</span>
+                <small>Notif</small>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <span>👤</span>
+                <small>Profile</small>
+            </a>
+            <a href="settings.html" class="nav-item">
+                <span>⚙️</span>
+                <small>Settings</small>
+            </a>
+        </footer>
+    </div>
+
+    <script src="src/styles/script/main.js"></script>
+</body>
+</html>
