@@ -3,51 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Planner - Calendar</title>
+    <title>Manage Tasks - Task Manager</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/styles/style.css">
 </head>
 <body>
-    <div class="mobile-frame">
-        <header class="top-nav">
-            <a href="index.html" class="back-link">←</a>
-            <h2 class="page-head">Manage Tasks</h2>
-            
+    <div class="mobile-frame tasks-screen" id="app-frame">
+        <div class="login-decor">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+        </div>
+
+        <header class="header-bar-v2">
+            <div class="back-btn-header" onclick="location.href='index.html'">←</div>
+            <h2 class="header-title-center">MANAGE TASKS</h2>
+            <div class="notif-icon-top" onclick="location.href='notifications.html'" style="cursor:pointer;">🔔</div>
         </header>
 
-        <div class="calendar-box">
-            <div class="cal-header">
-                <span id="month-year-display">March 2022</span>
-                <div class="cal-nav">
-                    <button id="prev-month">‹</button>
-                    <button id="next-month">›</button>
+        <main class="tasks-content">
+            <div class="calendar-box">
+                <div class="cal-header">
+                    <span id="month-year-display">January 2026</span>
+                    <div class="cal-nav">
+                        <button id="prev-month">‹</button>
+                        <button id="next-month">›</button>
+                    </div>
                 </div>
+                <div class="cal-weekdays">
+                    <div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div><div>Su</div>
+                </div>
+                <div id="calendar-days" class="cal-days-grid"></div>
             </div>
-            <div class="cal-weekdays">
-                <div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div><div>Su</div>
+
+            <div class="task-management-area">
+                <div class="selected-date-label">Tasks for: <span id="picked-date">Today</span></div>
+                
+                <div class="input-card">
+                    <input type="text" id="todo-input" placeholder="What is the plan?">
+                    <button id="add-btn" class="main-add-btn">+</button>
+                </div>
+
+                <div class="filter-container">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="active">Active</button>
+                    <button class="filter-tab" data-filter="done">Done</button>
+                </div>
+
+                <div id="todo-list" class="task-grid-v2 scrollable-tasks"></div>
             </div>
-            <div id="calendar-days" class="cal-days-grid"></div>
-        </div>
-
-        <div class="selected-date-label">Tasks for: <span id="picked-date">Today</span></div>
-        <div class="input-card">
-            <input type="text" id="todo-input" placeholder="What is the plan?">
-            <button id="add-btn" class="main-add-btn">+</button>
-        </div>
-
-        <div class="filter-container">
-            <button class="filter-tab active" data-filter="all">All</button>
-            <button class="filter-tab" data-filter="active">Active</button>
-            <button class="filter-tab" data-filter="done">Done</button>
-        </div>
-
-        <div id="todo-list" class="task-grid-v2"></div>
+        </main>
 
         <footer class="footer-nav-square">
             <a href="index.html" class="nav-item"><span>🏠</span><small>Home</small></a>
-            <a href="tasks.html" class="nav-item"><span>📋</span><small>Tasks</small></a>
-            <a href="profile.html" class="nav-item active"><span>👤</span><small>Profile</small></a>
-            <a href="settings.html" class="nav-item"><span>⚙️</span><small>Settings</small></a>
+            <a href="task.html" class="nav-item active"><span>📋</span><small>Tasks</small></a>
+            <a href="profile.html" class="nav-item"><span>👤</span><small>Profile</small></a>
+            <a href="setting.html" class="nav-item"><span>⚙️</span><small>Settings</small></a>
         </footer>
     </div>
 

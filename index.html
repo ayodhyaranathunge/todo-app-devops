@@ -3,80 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager - Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Home - Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/styles/style.css">
 </head>
 <body>
-    <div class="mobile-frame">
+    <div class="mobile-frame home-screen" id="app-frame">
+        <div class="login-decor">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+        </div>
+
         <header class="home-header">
-            <h1 class="do-it-now">DO IT NOW</h1>
-            <div class="top-nav">
-                <div class="menu-btn">☰</div>
-                <div class="nav-right">
-                    <div class="avatars-group">
-                        <div class="mini-avatar"></div>
-                        <div class="plus-count">+5</div>
-                    </div>
-                    <button class="main-add-btn" onclick="location.href='tasks.html'">+</button>
-                </div>
-            </div>
+            <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+            <h2 class="do-it-now">DO IT NOW</h2>
+            <div class="notif-icon-top" onclick="location.href='notification.html'" style="cursor:pointer;">🔔</div>
         </header>
 
         <main class="home-content">
-            <div class="date-header">
-                <p class="month-text">JANUARY 2026</p>
-                <h2 class="current-date">Dealing With Tasks</h2>
+            <div class="welcome-box">
+                <h2 id="homeUserName">Hello, Amali!</h2>
+                <p>You have <span id="pendingCount" style="font-weight:600; color:#3c40c6;">1</span> tasks for today.</p>
             </div>
 
-            <div class="hero-card">
-                <div class="hero-content">
-                    <h3>Technical Support 10 Useful Tips</h3>
-                    <button class="get-started" onclick="location.href='tasks.html'">GET STARTED</button>
+            <section class="categories-wide">
+                <div class="cat-card-long pink-grad" onclick="location.href='task.html'">
+                    <span>Work</span>
+                    <div class="icon-circle">🏠</div>
                 </div>
-            </div>
-
-            <div class="status-row">
-                <div class="status-chip blue">Tasks Needed <span>34</span></div>
-                <div class="status-chip orange">Waiting <span>28</span></div>
-            </div>
-
-            <div id="todo-list" class="home-task-list">
+                <div class="cat-card-long green-grad" onclick="location.href='task.html'">
+                    <span>Personal</span>
+                    <div class="icon-circle">🏠</div>
                 </div>
+                <div class="cat-card-long orange-grad" onclick="location.href='task.html'">
+                    <span>Study</span>
+                    <div class="icon-circle">🎓</div>
+                </div>
+            </section>
+
+            <div class="progress-section">
+                <h3>Daily Progress</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" id="mainProgressBar"></div>
+                </div>
+                <p id="progressText">0% Completed</p>
+            </div>
         </main>
 
-        <footer class="footer-nav">
-            <a href="index.html" class="nav-item active">
-                <span class="nav-icon">🏠</span>
-                <span class="nav-text">Home</span>
-            </a>
-            <a href="tasks.html" class="nav-item">
-                <span class="nav-icon">📋</span>
-                <span class="nav-text">Tasks</span>
-            </a>
-            <a href="profile.html" class="nav-item">
-                <span class="nav-icon">👤</span>
-                <span class="nav-text">Profile</span>
-            </a>
-            <a href="settings.html" class="nav-item">
-                <span class="nav-icon">⚙️</span>
-                <span class="nav-text">Settings</span>
-            </a>
-        </footer>
-
-        <div id="side-menu" class="side-menu">
-            <div class="menu-header">
-                <div class="user-profile-circle"></div>
-                <h4>User Name</h4>
+        <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+                <span class="close-btn" onclick="toggleSidebar()">×</span>
             </div>
-            <nav class="menu-links">
-                <a href="index.html">Home</a>
-                <a href="tasks.html">Tasks</a>
-                <a href="settings.html">Settings</a>
+            <nav class="sidebar-nav">
+                <a href="index.html">🏠 Home</a>
+                <a href="task.html">📋 My Tasks</a>
+                <a href="notification.html">🔔 Notifications</a>
+                <a href="profile.html">👤 Profile</a>
+                <a href="setting.html">⚙️ Settings</a>
+                <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 20px 0;">
+                <a href="logout.html" class="logout-link" style="color: #ff7675;">🚪 Logout</a>
             </nav>
         </div>
-        <div id="menu-overlay" class="menu-overlay"></div>
+
+        <footer class="footer-nav-square">
+            <a href="index.html" class="nav-item active"><span>🏠</span><small>Home</small></a>
+            <a href="task.html" class="nav-item"><span>📋</span><small>Tasks</small></a>
+            <a href="profile.html" class="nav-item"><span>👤</span><small>Profile</small></a>
+            <a href="setting.html" class="nav-item"><span>⚙️</span><small>Settings</small></a>
+        </footer>
     </div>
+
     <script src="src/styles/script/main.js"></script>
 </body>
 </html>

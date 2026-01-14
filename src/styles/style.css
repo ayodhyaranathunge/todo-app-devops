@@ -1,4 +1,4 @@
-/* --- Base & Reset Styles --- */
+/* --- Base & Reset Styles (Maintain) --- */
 * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 body {
     background-color: #f4f7fc;
@@ -15,7 +15,7 @@ body {
     position: relative; 
 }
 
-/* --- Navigation & Header --- */
+/* --- Navigation & Header (Maintain) --- */
 .top-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
 .nav-right { display: flex; align-items: center; gap: 10px; }
 .avatars-group { display: flex; align-items: center; }
@@ -27,34 +27,131 @@ body {
 .month-text { color: #3498db; font-size: 12px; margin: 0; font-weight: 600; }
 .current-date { font-size: 24px; margin: 5px 0 0 0; color: #2d3436; }
 
-/*---Home Page ---*/
+/* --- HOME PAGE (Remade with New Styles) --- */
 
-/* Header Styling */
+/* Header Styling - Centered */
+/* --- Home Header Remake (Matching Settings Page Size) --- */
 .home-header {
     background: #e3f2fd; /* Light Blue */
-    padding: 20px;
+    padding: 30px 25px; /* උස වැඩිකර ඇත (Settings page එකට සමානයි) */
     border-radius: 0 0 30px 30px;
     margin: -25px -25px 20px -25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 5;
 }
 
+/* Header එකේ Title එක මැදට ගැනීම */
 .do-it-now {
+    flex: 1;
     text-align: center;
     font-weight: 800;
     color: #3c40c6;
     font-size: 22px;
-    margin-bottom: 10px;
     letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0; /* අනවශ්‍ය margin ඉවත් කිරීම */
 }
 
-/* Home Task List Scroll Area */
+/* Notification Bell එක දකුණු කෙළවරට ස්ථාවර කිරීම */
+.notif-icon-top {
+    cursor: pointer;
+    font-size: 22px;
+    padding-left: 10px;
+    transition: 0.3s;
+}
+
+.notif-icon-top:hover {
+    transform: scale(1.1);
+}
+
+/* Menu Button එක වම් පස තබා ගැනීම */
+.menu-btn {
+    font-size: 24px;
+    cursor: pointer;
+    color: #3c40c6;
+    padding-right: 10px;
+}
+/* Wide Creative Category Cards */
+.categories-wide { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    padding: 10px 0px; 
+}
+
+.cat-card-long {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 25px; 
+    border-radius: 20px; 
+    color: white;
+    font-weight: 600; 
+    font-size: 18px; 
+    cursor: pointer; 
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.cat-card-long:hover { 
+    transform: scale(1.02); 
+}
+
+.icon-circle {
+    width: 45px; 
+    height: 45px; 
+    background: white; 
+    border-radius: 50%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 20px;
+}
+
+/* Gradients for Categories */
+.pink-grad { background: linear-gradient(90deg, #ff7eb3, #ff758c); }
+.green-grad { background: linear-gradient(90deg, #42e695, #3bb2b8); }
+.orange-grad { background: linear-gradient(90deg, #fbb034, #ff8c00); }
+
+/* Sidebar Creative Style */
+.sidebar {
+    position: absolute; 
+    top: 0; 
+    left: -280px; 
+    width: 260px; 
+    height: 100%;
+    background: #1a1a2e; 
+    color: white; 
+    transition: 0.4s; 
+    z-index: 1000;
+    padding: 40px 25px; 
+    box-shadow: 10px 0 30px rgba(0,0,0,0.3);
+}
+
+.sidebar.active { 
+    left: 0; 
+}
+
+.sidebar-nav a {
+    display: block; 
+    padding: 18px 0; 
+    color: #fff; 
+    text-decoration: none;
+    font-size: 17px; 
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Scroll Area & Footer (Maintain) */
 .home-task-list {
     flex: 1;
     overflow-y: auto;
-    padding-bottom: 80px; /* Space for Footer */
+    padding-bottom: 80px; 
     scrollbar-width: thin;
 }
 
-/* Scroll button indicator (Visual) */
 .home-task-list::after {
     content: '↓ scroll for more';
     display: block;
@@ -64,13 +161,12 @@ body {
     margin: 10px 0;
 }
 
-/* Dark Blue Footer Nav */
 .footer-nav {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #1a1a2e; /* Dark Blue */
+    background: #0101b6; /* Dark Blue */
     display: flex;
     justify-content: space-around;
     padding: 12px 0;
@@ -91,8 +187,6 @@ body {
 .nav-icon { font-size: 20px; }
 .nav-text { font-size: 10px; margin-top: 4px; }
 
-/*--- end of home page ---*/
-
 /* --- Login & Signup Styles --- */
 .login-screen, .signup-screen { position: relative; background: #fff; justify-content: center; overflow: hidden; display: flex; flex-direction: column; }
 .login-decor .circle-1 { position: absolute; width: 250px; height: 250px; background: #3c40c6; border-radius: 50%; top: -80px; left: -50px; opacity: 0.1; }
@@ -101,35 +195,133 @@ body {
 .login-btn { background: #3c40c6; color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 600; margin-top: 20px; cursor: pointer; }
 
 /* --- Settings Page Styles --- */
-.settings-screen { background: #fdfdfd; }
-.profile-preview { display: flex; align-items: center; gap: 20px; padding: 20px; background: #fff; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); margin-bottom: 30px; }
-.option-toggle { width: 40px; height: 22px; background: #eee; border-radius: 20px; position: relative; transition: 0.3s; }
-.option-toggle::before { content: ''; position: absolute; width: 16px; height: 16px; background: #fff; border-radius: 50%; top: 3px; left: 3px; transition: 0.3s; }
-.option-toggle.active { background: #34c759 !important; }
-.option-toggle.active::before { left: 21px !important; }
+/* Settings Page Specific */
+.user-info-card {
+    background: #f8faff; padding: 20px; border-radius: 20px;
+    margin-bottom: 30px; text-align: center; border: 1px solid #eef2f6;
+}
 
-/* --- Dark Mode Overrides --- */
-body.dark-theme { background-color: #1a1a2e !important; color: #fff !important; }
-body.dark-theme .mobile-frame { background-color: #16213e !important; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-body.dark-theme .task-item, body.dark-theme .option-item, body.dark-theme .input-card input, body.dark-theme .profile-preview { background: #0f3460 !important; color: #fff !important; border-color: #1a1a2e !important; }
-body.dark-theme h1, body.dark-theme h2, body.dark-theme h4 { color: #ffffff !important; }
+.settings-list { display: flex; flex-direction: column; gap: 5px; }
+
+.setting-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px; background: #fff; border-radius: 12px;
+    cursor: pointer; transition: 0.2s; margin-bottom: 8px;
+}
+
+.setting-item:hover { background: #f0f4f8; }
+
+/* Toggle Switch Styling */
+.switch { position: relative; display: inline-block; width: 45px; height: 24px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc; transition: .4s; border-radius: 34px;
+}
+.slider:before {
+    position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px;
+    background-color: white; transition: .4s; border-radius: 50%;
+}
+input:checked + .slider { background-color: #3c40c6; }
+input:checked + .slider:before { transform: translateX(21px); }
+
+/* Dark Mode Implementation */
+.dark-mode { background-color: #1a1a2e !important; color: #fff !important; }
+.dark-mode .setting-item { background: #24243e; color: #fff; border: none; }
+.dark-mode .user-info-card { background: #24243e; border-color: #333; }
+.dark-mode .header-bar-v2 { background: #24243e !important; border-bottom: 1px solid #333; }
+.dark-mode .header-title { color: #fff; }
+
+
+/* ========================================== */
+/* SETTINGS PAGE – BACKGROUND DECOR CIRCLES   */
+/* ========================================== */
+
+.settings-screen .login-decor .circle-1 {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: #3c40c6;
+    border-radius: 50%;
+    top: -50px;
+    left: -80px;
+    opacity: 0.05;
+    z-index: 1;
+}
+
+.settings-screen .login-decor .circle-2 {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: #ff7675;
+    border-radius: 50%;
+    bottom: 100px;
+    right: -50px;
+    opacity: 0.05;
+    z-index: 1;
+}
+
 
 /* ========================================== */
 /* NEW: Pinterest Calendar & Task Page Styles */
 /* ========================================== */
 
-.calendar-box {
-    background: #ffffff; border-radius: 30px; padding: 25px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.04); margin-top: 15px;
+/* --- 1. Manage Tasks Screen Background (Settings Style) --- */
+.tasks-screen {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
 }
-.cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+
+.tasks-screen .login-decor .circle-1 {
+    position: absolute; width: 250px; height: 250px; background: #3c40c6;
+    border-radius: 50%; top: -50px; left: -80px; opacity: 0.05; z-index: 1;
+}
+
+.tasks-screen .login-decor .circle-2 {
+    position: absolute; width: 180px; height: 180px; background: #ff7675;
+    border-radius: 50%; bottom: 100px; right: -50px; opacity: 0.05; z-index: 1;
+}
+
+/* --- 2. Space & Layout Management --- */
+.tasks-content {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space reduced for better fit */
+    padding: 0 15px;
+}
+
+.header-title-center {
+    flex: 1;
+    text-align: center;
+    color: #3c40c6;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+/* --- 3. Calendar Box Styles --- */
+.calendar-box {
+    background: #ffffff; 
+    border-radius: 25px; 
+    padding: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.04); 
+    margin-top: 15px;
+    position: relative;
+    z-index: 10;
+}
+
+.cal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
 .cal-header span { font-weight: 600; font-size: 18px; color: #2d3436; }
 .cal-nav button { background: #f0f2f5; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; color: #333; font-weight: bold; }
 
-.cal-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; margin-bottom: 15px; }
+.cal-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; margin-bottom: 10px; }
 .cal-weekdays div { font-size: 12px; font-weight: 600; color: #cbd5e0; }
 
 .cal-days-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+
 .day-node {
     aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
     font-size: 14px; cursor: pointer; border-radius: 50%; transition: 0.2s;
@@ -139,8 +331,9 @@ body.dark-theme h1, body.dark-theme h2, body.dark-theme h4 { color: #ffffff !imp
 .day-node.today-mark { border: 2px solid #3c40c6; color: #3c40c6; font-weight: bold; }
 .day-node.other-month { color: #edf2f7; pointer-events: none; }
 
-.selected-date-label { font-size: 12px; color: #3498db; margin: 20px 0 10px 0; font-weight: 600; }
+.selected-date-label { font-size: 12px; color: #3498db; margin: 15px 0 10px 0; font-weight: 600; }
 
+/* --- 4. Task Row & Cards Styles --- */
 .task-row-v2 {
     background: white; padding: 20px; border-radius: 25px;
     margin-bottom: 15px; display: flex; flex-direction: column;
@@ -149,61 +342,43 @@ body.dark-theme h1, body.dark-theme h2, body.dark-theme h4 { color: #ffffff !imp
 .task-row-v2 h4 { margin: 0; font-size: 16px; color: #2d3436; }
 .task-date-stamp { font-size: 10px; color: #a0aec0; margin-top: 10px; display: flex; align-items: center; gap: 5px; }
 
-/* Dark Mode support for new Task Cards */
-body.dark-theme .task-row-v2, body.dark-theme .calendar-box { background: #0f3460 !important; color: #fff; }
-body.dark-theme .day-node:hover { background: #1a1a2e; }
-
-/* 1. Scrolling ගැටලුව විසඳීම සඳහා */
-.task-grid-v2 {
-    flex: 1;
-    overflow-y: auto; /* Task ගොඩක් ඇති විට scroll වීමට */
-    padding-bottom: 20px;
-    max-height: 400px; /* උස සීමා කර scroll පහසුකම ලබා දීම */
-}
-
-/* 2. Done Task එකක් පෙන්වන ආකාරය */
+/* Done State */
 .task-row-v2.done {
-    border-left-color: #2ecc71 !important; /* කොළ පාට border එක */
+    border-left-color: #2ecc71 !important;
     background-color: #f0fff4 !important;
 }
+.task-row-v2.done h4::before { content: "✅ "; }
+.task-row-v2.done h4 { text-decoration: line-through; color: #a0aec0; }
 
-.task-row-v2.done h4::before {
-    content: "✅ "; /* Task එක ඉදිරියෙන් වැටෙන හරි ලකුණ */
-}
+/* --- 5. Filtering & Scrolling --- */
+.filter-container { display: flex; gap: 10px; margin: 15px 0; }
+.filter-tab { border: none; padding: 8px 18px; border-radius: 12px; font-weight: 600; cursor: pointer; transition: 0.3s; }
 
-.task-row-v2.done h4 {
-    text-decoration: line-through;
-    color: #a0aec0;
-}
-
-/* 3. Filter Buttons වර්ණවත් කිරීම */
-.filter-container {
-    display: flex;
-    gap: 10px;
-    margin: 15px 0;
-}
-
-.filter-tab {
-    border: none;
-    padding: 8px 18px;
-    border-radius: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-/* All Button */
 .filter-tab[data-filter="all"] { background: #edf2f7; color: #4a5568; }
 .filter-tab[data-filter="all"].active { background: #3c40c6; color: white; }
 
-/* Active Button */
 .filter-tab[data-filter="active"] { background: #fffaf0; color: #dd6b20; }
 .filter-tab[data-filter="active"].active { background: #ed8936; color: white; }
 
-/* Done Button */
 .filter-tab[data-filter="done"] { background: #f0fff4; color: #2f855a; }
 .filter-tab[data-filter="done"].active { background: #48bb78; color: white; }
 
+/* Scrollable Task Grid */
+.task-grid-v2 {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 80px; /* Space for Footer */
+    max-height: 350px; /* Limits height to enable scrolling */
+}
+
+/* Custom Scrollbar for better UI */
+.task-grid-v2::-webkit-scrollbar { width: 4px; }
+.task-grid-v2::-webkit-scrollbar-thumb { background: #cbd5e0; border-radius: 10px; }
+
+/* Dark Mode Support */
+body.dark-theme .task-row-v2, 
+body.dark-theme .calendar-box { background: #0f3460 !important; color: #fff; }
+body.dark-theme .day-node:hover { background: #1a1a2e; }
 /*profile page*/
 
 /* ========================================== */
@@ -240,7 +415,7 @@ body.dark-theme .day-node:hover { background: #1a1a2e; }
     background-color: #e3f2fd !important; /* Light Blue */
     display: flex;
     align-items: center;
-    padding: 18px 25px;
+    padding: 30px 25px;
     margin: -25px -25px 25px -25px; /* Frame padding එකට ගැලපීමට */
     border-bottom: 1px solid #bbdefb;
     border-radius: 0 0 20px 20px;
@@ -525,4 +700,307 @@ body.dark-theme .day-node:hover { background: #1a1a2e; }
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+/*dark mode
+/* පොදු Dark Mode Styles */
+body.dark-theme {
+    background-color: #1a1a2e !important;
+    color: #ffffff !important;
+}
+
+body.dark-theme .mobile-frame {
+    background: #16213e !important;
+    color: #ffffff;
+}
+
+body.dark-theme .header-bar-v2, 
+body.dark-theme .home-header {
+    background: #0f3460 !important;
+}
+
+body.dark-theme .footer-nav-square {
+    background: #0f3460 !important;
+}
+
+/* Tasks සහ අනෙකුත් cards වලට අදාළව */
+body.dark-theme .task-row-v2, 
+body.dark-theme .calendar-box,
+body.dark-theme .welcome-box {
+    background: #1a1a2e !important;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+/*security
+/* --- Security Page Specific Styles --- */
+.security-screen { background: #fdfdfd; }
+
+.security-content {
+    padding: 10px 20px;
+    z-index: 5;
+    position: relative;
+}
+
+.security-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 100px; /* Space for footer */
+}
+
+.sec-card {
+    background: white;
+    padding: 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #f0f4f8;
+    transition: 0.3s;
+}
+
+.sec-card:hover { transform: translateY(-5px); }
+
+.sec-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.sec-card h3 {
+    font-size: 18px;
+    color: #2d3436;
+    margin-bottom: 8px;
+}
+
+.sec-card p {
+    font-size: 13px;
+    color: #888;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.sec-action-btn {
+    background: transparent;
+    border: 1.5px solid #3c40c6;
+    color: #3c40c6;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sec-action-btn.blue-btn {
+    background: #3c40c6;
+    color: white;
+}
+
+.sec-action-btn:hover {
+    background: #3c40c6;
+    color: white;
+}
+
+/* Dark Mode Support for Security Page */
+.dark-theme .sec-card {
+    background: #16213e !important;
+    border-color: #333;
+}
+
+.dark-theme .sec-card h3 { color: #fff; }
+.dark-theme .sec-card p { color: #aaa; }
+
+/*darkmode*/
+
+/* ============================================================
+   FINAL DARK MODE IMPLEMENTATION (FRAME-ONLY & TEXT & CIRCLES)
+   ============================================================ */
+
+/* 1. ප්‍රධාන පසුබිම සහ පොදු අකුරු වර්ණය (App Frame එකට පමණි) */
+.mobile-frame.dark-theme {
+    background-color: #1a1a2e !important;
+    color: #ffffff !important;
+}
+
+/* 2. සියලුම Headers, Labels, Titles සහ Paragraphs සුදු පැහැයට හැරවීම */
+.mobile-frame.dark-theme h2,
+.mobile-frame.dark-theme h3,
+.mobile-frame.dark-theme h4,
+.mobile-frame.dark-theme span,
+.mobile-frame.dark-theme label,
+.mobile-frame.dark-theme p,
+.mobile-frame.dark-theme small,
+.mobile-frame.dark-theme i {
+    color: #ffffff !important;
+}
+
+/* 3. Home Page Header එක සහ එහි අංග සඳහා විශේෂ Fixes */
+.mobile-frame.dark-theme .home-header {
+    background: #0f3460 !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid #16213e;
+}
+
+.mobile-frame.dark-theme .home-header h2,
+.mobile-frame.dark-theme .home-header p,
+.mobile-frame.dark-theme .home-header .do-it-now,
+.mobile-frame.dark-theme .menu-btn,
+.mobile-frame.dark-theme .notif-icon-top {
+    color: #ffffff !important;
+}
+
+/* 4. Cards සහ අනෙකුත් අංග වල වර්ණ (Settings, Tasks, Security, Notifications) */
+.mobile-frame.dark-theme .setting-item,
+.mobile-frame.dark-theme .task-row-v2, 
+.mobile-frame.dark-theme .calendar-box,
+.mobile-frame.dark-theme .user-info-card,
+.mobile-frame.dark-theme .sec-card,
+.mobile-frame.dark-theme .notif-card,
+.mobile-frame.dark-theme .welcome-box {
+    background: #16213e !important;
+    color: #ffffff !important;
+    border-color: #333 !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* 5. Input Fields සහ Selection Boxes (පැහැදිලිව අකුරු පෙනීමට) */
+.mobile-frame.dark-theme input,
+.mobile-frame.dark-theme select,
+.mobile-frame.dark-theme textarea {
+    background: #24243e !important;
+    color: #ffffff !important;
+    border: 1px solid #444 !important;
+}
+
+/* 6. පොදු Header (Header Bar V2) සහ Footer Navigation */
+.mobile-frame.dark-theme .header-bar-v2,
+.mobile-frame.dark-theme .footer-nav-square {
+    background: #0f3460 !important;
+    color: #ffffff !important;
+    border-color: #16213e;
+}
+
+.mobile-frame.dark-theme .footer-nav-square .nav-item {
+    color: #ffffff !important;
+}
+
+/* 7. Calendar එකේ දින (Dates) වල වර්ණය */
+.mobile-frame.dark-theme .day-node {
+    color: #ffffff !important;
+}
+
+.mobile-frame.dark-theme .day-node.other-month {
+    color: #444 !important; /* වෙනත් මාස වල දින බොඳ කර පෙන්වීමට */
+}
+
+.mobile-frame.dark-theme .day-node.active-day {
+    color: #000000 !important; /* තේරූ දිනය කළු අකුරින් පැහැදිලිව පෙන්වීමට */
+}
+
+/* 8. Background Circles Fix - Dark Mode එකේදී පෙනීම වැඩි කිරීමට */
+.mobile-frame.dark-theme .login-decor .circle-1,
+.mobile-frame.dark-theme .circle-1 {
+    background: #3c40c6 !important;
+    opacity: 0.2 !important; /* Opacity එක වැඩි කර ඇත */
+    z-index: 1;
+    filter: brightness(1.2);
+}
+
+.mobile-frame.dark-theme .login-decor .circle-2,
+.mobile-frame.dark-theme .circle-2 {
+    background: #ff7675 !important;
+    opacity: 0.2 !important;
+    z-index: 1;
+    filter: brightness(1.2);
+}
+
+/* 9. බ්‍රවුසරයේ පිටත පසුබිම වෙනස් නොකිරීමට */
+body {
+    background-color: #f4f7fc !important; 
+}
+
+/*setting page header*/
+
+/* --- Settings Page Header Fix (Matching Home & Task) --- */
+.settings-screen .header-bar-v2 {
+    background: #e3f2fd; /* Light Blue for Light Mode */
+    padding: 35px 25px; /* Task Page එකට සමාන උස */
+    border-radius: 0 0 30px 30px;
+    margin: -25px -25px 25px -25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #bbdefb;
+    position: relative;
+    z-index: 5;
+}
+
+/* Settings Title එක මැදට ගැනීම */
+.settings-screen .header-title {
+    flex: 1;
+    text-align: center;
+    font-weight: 800;
+    color: #3c40c6;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* Back Button සහ Notification අයිකනය */
+.settings-screen .back-btn-header, 
+.settings-screen .notif-icon-top {
+    color: #3c40c6;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* --- Settings Header Dark Mode Fix --- */
+.mobile-frame.dark-theme .settings-screen .header-bar-v2 {
+    background: #0f3460 !important; /* Dark Blue for Dark Mode */
+    border-bottom: 1px solid #16213e;
+}
+
+.mobile-frame.dark-theme .settings-screen .header-title,
+.mobile-frame.dark-theme .settings-screen .back-btn-header,
+.mobile-frame.dark-theme .settings-screen .notif-icon-top {
+    color: #ffffff !important;
+}
+
+/*darkmode button reset*/
+
+/* --- DARK MODE RESET: බොත්තම වැඩ කරන පරිදි නිවැරදි කිරීම --- */
+
+/* App Frame එකට .dark-theme class එක තිබුණොත් පමණක් මේවා ක්‍රියාත්මක වේ */
+.mobile-frame.dark-theme {
+    background-color: #1a1a2e !important;
+}
+
+/* ඇප් එක ඇතුළත ඇති සියලුම අකුරු සුදු කිරීම */
+.mobile-frame.dark-theme h2,
+.mobile-frame.dark-theme h3,
+.mobile-frame.dark-theme h4,
+.mobile-frame.dark-theme p,
+.mobile-frame.dark-theme span,
+.mobile-frame.dark-theme label,
+.mobile-frame.dark-theme small,
+.mobile-frame.dark-theme .do-it-now {
+    color: #ffffff !important;
+}
+
+/* Cards වල වර්ණය වෙනස් කිරීම */
+.mobile-frame.dark-theme .setting-item,
+.mobile-frame.dark-theme .task-row-v2, 
+.mobile-frame.dark-theme .calendar-box,
+.mobile-frame.dark-theme .user-info-card,
+.mobile-frame.dark-theme .sec-card,
+.mobile-frame.dark-theme .notif-card,
+.mobile-frame.dark-theme .welcome-box {
+    background-color: #16213e !important;
+    border-color: #333 !important;
+}
+
+/* Header සහ Footer අඳුරු කිරීම */
+.mobile-frame.dark-theme .header-bar-v2,
+.mobile-frame.dark-theme .home-header,
+.mobile-frame.dark-theme .footer-nav-square {
+    background-color: #0f3460 !important;
 }

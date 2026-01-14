@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security - Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+    <div class="mobile-frame security-screen" id="app-frame">
+        <div class="login-decor">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+        </div>
+
+        <header class="header-bar-v2">
+            <div class="back-btn-header" onclick="history.back()">←</div>
+            <h2 class="header-title-center">SECURITY</h2>
+            <div class="notif-icon-top" onclick="location.href='notification.html'">🔔</div>
+        </header>
+
+        <main class="security-content scrollable-area">
+            <div class="security-cards-container">
+                
+                <div class="sec-card">
+                    <div class="sec-icon">🔒</div>
+                    <h3>App Lock</h3>
+                    <p>Hide apps and private data. Nobody can break into it.</p>
+                    <button class="sec-action-btn">Enable Lock</button>
+                </div>
+
+                <div class="sec-card">
+                    <div class="sec-icon">🛡️</div>
+                    <h3>Data Protection</h3>
+                    <p>Protect your photos and videos. Only you can see it.</p>
+                    <button class="sec-action-btn">Protect Now</button>
+                </div>
+
+                <div class="sec-card">
+                    <div class="sec-icon">📱</div>
+                    <h3>Break-in Alert</h3>
+                    <p>Get notified who has invaded your privacy.</p>
+                    <button class="sec-action-btn">View Alerts</button>
+                </div>
+
+                <div class="sec-card">
+                    <div class="sec-icon">🛡️</div>
+                    <h3>Privacy Safe</h3>
+                    <p>Protect your privacy every moment.</p>
+                    <button class="sec-action-btn blue-btn">Open Protection</button>
+                </div>
+
+            </div>
+        </main>
+
+        <footer class="footer-nav-square">
+            <a href="index.html" class="nav-item"><span>🏠</span><small>Home</small></a>
+            <a href="task.html" class="nav-item"><span>📋</span><small>Tasks</small></a>
+            <a href="profile.html" class="nav-item"><span>👤</span><small>Profile</small></a>
+            <a href="setting.html" class="nav-item active"><span>⚙️</span><small>Settings</small></a>
+        </footer>
+    </div>
+    <script src="src/styles/script/main.js"></script>
+</body>
+</html>

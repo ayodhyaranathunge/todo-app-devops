@@ -8,54 +8,65 @@
     <link rel="stylesheet" href="src/styles/style.css">
 </head>
 <body>
-    <div class="mobile-frame settings-screen">
-        <header class="settings-header">
-            <a href="index.html" class="back-btn">←</a>
-            <h2>Settings</h2>
+    <div class="mobile-frame settings-screen" id="app-frame">
+        <div class="login-decor">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+        </div>
+
+        <header class="header-bar-v2">
+            <div class="back-btn-header" onclick="history.back()">←</div>
+            <h2 class="header-title">Settings</h2>
+            <div class="notif-icon-top" onclick="location.href='notification.html'" style="cursor:pointer;">🔔</div>
         </header>
 
-        <div class="settings-content">
-            <div class="settings-group profile-preview">
-                <div class="user-avatar-large"></div>
-                <div class="user-info">
-                    <h4>User Name</h4>
-                    <p>user.name@email.com</p>
-                </div>
+        <main class="settings-content">
+            <div class="user-info-card">
+                <h3 id="setUserName">User Name</h3>
+                <p id="setUserEmail">user.name@email.com</p>
             </div>
 
-            <div class="settings-options">
-                <div class="option-item">
-                    <div class="option-icon">👤</div>
-                    <div class="option-text">Edit Profile</div>
-                    <div class="arrow">›</div>
+            <div class="settings-list">
+                <div class="setting-item" onclick="location.href='profile.html'">
+                    <span>👤 Edit Profile</span>
+                    <span class="arrow">›</span>
                 </div>
 
-                <div class="option-item" id="notif-toggle">
-                    <div class="option-icon">🔔</div>
-                    <div class="option-text">Notifications</div>
-                    <div class="option-toggle active" id="notif-switch"></div>
+                <div class="setting-item">
+                    <span>🔔 Notifications</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
                 </div>
 
-                <div class="option-item" id="dark-mode-toggle">
-                    <div class="option-icon">🌙</div>
-                    <div class="option-text">Dark Mode</div>
-                    <div class="option-toggle" id="dark-mode-switch"></div>
+                <div class="setting-item">
+                    <span>🌙 Dark Mode</span>
+                    <label class="switch">
+                        <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+                        <span class="slider round"></span>
+                    </label>
                 </div>
 
-                <div class="option-item">
-                    <div class="option-icon">🔒</div>
-                    <div class="option-text">Security</div>
-                    <div class="arrow">›</div>
+                <div class="setting-item" onclick="location.href='security.html'">
+                    <span>🔒 Security</span>
+                    <span class="arrow">›</span>
                 </div>
 
-                <div class="option-item logout">
-                    <div class="option-icon">🚪</div>
-                    <div class="option-text">Logout</div>
+                <div class="setting-item" onclick="location.href='logout.html'">
+                    <span>🚪 Logout</span>
+                    <span class="arrow">›</span>
                 </div>
             </div>
-        </div>
+        </main>
+
+        <footer class="footer-nav-square">
+            <a href="index.html" class="nav-item"><span>🏠</span><small>Home</small></a>
+            <a href="task.html" class="nav-item"><span>📋</span><small>Tasks</small></a>
+            <a href="profile.html" class="nav-item"><span>👤</span><small>Profile</small></a>
+            <a href="setting.html" class="nav-item active"><span>⚙️</span><small>Settings</small></a>
+        </footer>
     </div>
-
     <script src="src/styles/script/main.js"></script>
 </body>
 </html>
