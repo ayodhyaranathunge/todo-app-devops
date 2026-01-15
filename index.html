@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="src/styles/style.css">
 </head>
 <body>
-    <div class="mobile-frame home-screen" id="app-frame">
+    <div class="mobile-frame"  id="app-frame">
         <div class="login-decor">
             <div class="circle-1"></div>
             <div class="circle-2"></div>
@@ -23,20 +23,20 @@
         <main class="home-content">
             <div class="welcome-box">
                 <h2 id="homeUserName">Hello, Amali!</h2>
-                <p>You have <span id="pendingCount" style="font-weight:600; color:#3c40c6;">1</span> tasks for today.</p>
+                <p>You have <span id="pendingCount" style="font-weight:600; color:#3c40c6;">0</span> tasks for today.</p>
             </div>
 
             <section class="categories-wide">
-                <div class="cat-card-long pink-grad" onclick="location.href='task.html'">
-                    <span>Work</span>
+                <div class="cat-card-long pink-grad" onclick="location.href='task.html?cat=Work'">
+                    <span id="count-Work">Work <br><small>0 Tasks</small></span>
                     <div class="icon-circle">🏠</div>
                 </div>
-                <div class="cat-card-long green-grad" onclick="location.href='task.html'">
-                    <span>Personal</span>
+                <div class="cat-card-long green-grad" onclick="location.href='task.html?cat=Personal'">
+                    <span id="count-Personal">Personal <br><small>0 Tasks</small></span>
                     <div class="icon-circle">🏠</div>
                 </div>
-                <div class="cat-card-long orange-grad" onclick="location.href='task.html'">
-                    <span>Study</span>
+                <div class="cat-card-long orange-grad" onclick="location.href='task.html?cat=Study'">
+                    <span id="count-Study">Study <br><small>0 Tasks</small></span>
                     <div class="icon-circle">🎓</div>
                 </div>
             </section>
@@ -74,7 +74,17 @@
             <a href="setting.html" class="nav-item"><span>⚙️</span><small>Settings</small></a>
         </footer>
     </div>
+<div id="customAlert" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-icon">✅</div>
+            <p id="alertMessage">Success!</p>
+            <button onclick="closeAlert()">OK</button>
+        </div>
+    </div>
+
+    <div id="menu-overlay" class="menu-overlay"></div>
 
     <script src="src/styles/script/main.js"></script>
 </body>
 </html>
+    

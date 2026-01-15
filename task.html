@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="src/styles/style.css">
 </head>
 <body>
-    <div class="mobile-frame tasks-screen" id="app-frame">
+    <div class="mobile-frame" id="app-frame">
         <div class="login-decor">
             <div class="circle-1"></div>
             <div class="circle-2"></div>
@@ -17,10 +17,10 @@
         <header class="header-bar-v2">
             <div class="back-btn-header" onclick="location.href='index.html'">←</div>
             <h2 class="header-title-center">MANAGE TASKS</h2>
-            <div class="notif-icon-top" onclick="location.href='notifications.html'" style="cursor:pointer;">🔔</div>
+            <div class="notif-icon-top" onclick="location.href='notification.html'" style="cursor:pointer;">🔔</div>
         </header>
 
-        <main class="tasks-content">
+        <main class="tasks-content" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
             <div class="calendar-box">
                 <div class="cal-header">
                     <span id="month-year-display">January 2026</span>
@@ -35,21 +35,22 @@
                 <div id="calendar-days" class="cal-days-grid"></div>
             </div>
 
-            <div class="task-management-area">
+            <div class="task-management-area" style="display: flex; flex-direction: column; flex: 1; overflow: hidden; padding-top: 10px;">
                 <div class="selected-date-label">Tasks for: <span id="picked-date">Today</span></div>
                 
-                <div class="input-card">
-                    <input type="text" id="todo-input" placeholder="What is the plan?">
+                <div class="input-card" style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <input type="text" id="todo-input" placeholder="What is the plan?" style="flex: 1;">
                     <button id="add-btn" class="main-add-btn">+</button>
                 </div>
 
-                <div class="filter-container">
+                <div class="filter-container" style="display: flex; gap: 10px; margin-bottom: 15px;">
                     <button class="filter-tab active" data-filter="all">All</button>
                     <button class="filter-tab" data-filter="active">Active</button>
                     <button class="filter-tab" data-filter="done">Done</button>
                 </div>
 
-                <div id="todo-list" class="task-grid-v2 scrollable-tasks"></div>
+                <div id="todo-list" class="task-grid-v2" style="flex: 1; overflow-y: auto;">
+                    </div>
             </div>
         </main>
 
@@ -59,6 +60,16 @@
             <a href="profile.html" class="nav-item"><span>👤</span><small>Profile</small></a>
             <a href="setting.html" class="nav-item"><span>⚙️</span><small>Settings</small></a>
         </footer>
+    </div>
+
+    <div id="menu-overlay" class="menu-overlay"></div>
+
+    <div id="customAlert" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-icon">✅</div>
+            <p id="alertMessage">Success!</p>
+            <button onclick="closeAlert()">OK</button>
+        </div>
     </div>
 
     <div id="menu-overlay" class="menu-overlay"></div>

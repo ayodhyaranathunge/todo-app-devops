@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="src/styles/style.css">
 </head>
 <body>
-    <div class="mobile-frame security-screen" id="app-frame">
+    <div class="mobile-frame" id="app-frame">
         <div class="login-decor">
             <div class="circle-1"></div>
             <div class="circle-2"></div>
@@ -61,6 +61,16 @@
             <a href="setting.html" class="nav-item active"><span>⚙️</span><small>Settings</small></a>
         </footer>
     </div>
+    <div id="customAlert" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-icon">✅</div>
+            <p id="alertMessage">Success!</p>
+            <button onclick="closeAlert()">OK</button>
+        </div>
+    </div>
+
+    <div id="menu-overlay" class="menu-overlay"></div>
+
     <script src="src/styles/script/main.js"></script>
 </body>
 </html>

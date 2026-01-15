@@ -4,6 +4,7 @@
 let selectedDate = new Date();
 let currentViewDate = new Date();
 let tasks = JSON.parse(localStorage.getItem('myTasks')) || [];
+let currentFilter = 'all'; 
 
 // ==========================================
 // 2. Calendar Logic (Tasks Page)
@@ -47,7 +48,6 @@ function renderCalendar() {
     }
 }
 
-// Calendar Navigation
 if (document.getElementById('prev-month')) {
     document.getElementById('prev-month').onclick = () => { 
         currentViewDate.setMonth(currentViewDate.getMonth() - 1); 
@@ -60,7 +60,7 @@ if (document.getElementById('prev-month')) {
 }
 
 // ==========================================
-// 3. Task Management (Add, Toggle, Delete)
+// 3. Task Management (Add, Toggle, Delete, Render)
 // ==========================================
 function saveTask() {
     const input = document.getElementById('todo-input');
@@ -94,15 +94,33 @@ window.deleteTask = (id) => {
     }
 };
 
+function setupFilters() {
+    const tabs = document.querySelectorAll('.filter-tab');
+    tabs.forEach(tab => {
+        tab.onclick = function() {
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            currentFilter = this.getAttribute('data-filter');
+            renderTasks();
+        };
+    });
+}
+
 function renderTasks() {
     const list = document.getElementById('todo-list');
     if (!list) return;
     list.innerHTML = '';
+    
+    let dailyTasks = tasks.filter(t => new Date(t.timestamp).toDateString() === selectedDate.toDateString());
 
-    const dailyTasks = tasks.filter(t => new Date(t.timestamp).toDateString() === selectedDate.toDateString());
+    if (currentFilter === 'active') {
+        dailyTasks = dailyTasks.filter(t => !t.done);
+    } else if (currentFilter === 'done') {
+        dailyTasks = dailyTasks.filter(t => t.done);
+    }
 
     if (dailyTasks.length === 0) {
-        list.innerHTML = '<p style="text-align:center; color:#888; font-size:12px; margin-top:20px;">No tasks for this day.</p>';
+        list.innerHTML = `<p style="text-align:center; color:#888; font-size:12px; margin-top:20px;">No ${currentFilter} tasks for this day.</p>`;
         return;
     }
 
@@ -136,6 +154,11 @@ function updateHomeUI() {
         document.getElementById('homeUserName').innerText = `Hello, ${profile.name}!`;
     }
 
+    // Home පිටුවේ පින්තූරය පෙන්වීම
+    const homeImg = document.getElementById('homeProfileImg');
+    const savedImg = localStorage.getItem('profileImage');
+    if (homeImg && savedImg) homeImg.src = savedImg;
+
     const todayStr = new Date().toDateString();
     const todayTasks = tasks.filter(t => new Date(t.timestamp).toDateString() === todayStr);
     const pending = todayTasks.filter(t => !t.done).length;
@@ -163,26 +186,95 @@ function toggleSidebar() {
 }
 
 // ==========================================
-// 5. Settings & Dark Mode (RECORRECTED)
+// 5. Settings, Profile Data & Dark Mode
 // ==========================================
+// Settings පිටුවට දත්ත ලබා දෙන ශ්‍රිතය යාවත්කාලීන කරන ලදී
 function loadSettingsData() {
     const savedProfile = JSON.parse(localStorage.getItem('userProfile'));
+    const savedImg = localStorage.getItem('profileImage'); // සුරකින ලද පින්තූරය ලබා ගැනීම
+
     if (savedProfile) {
-        if (document.getElementById('setUserName')) document.getElementById('setUserName').innerText = savedProfile.name;
-        if (document.getElementById('setUserEmail')) document.getElementById('setUserEmail').innerText = savedProfile.email;
+        if (document.getElementById('setUserName')) 
+            document.getElementById('setUserName').innerText = savedProfile.name;
+        if (document.getElementById('setUserEmail')) 
+            document.getElementById('setUserEmail').innerText = savedProfile.email;
+        
+        if (document.getElementById('userNameInput')) document.getElementById('userNameInput').value = savedProfile.name;
+        if (document.getElementById('userEmailInput')) document.getElementById('userEmailInput').value = savedProfile.email;
+    }
+
+    // Settings පිටුවේ පින්තූරය පෙන්වීම
+    const setImgEl = document.getElementById('setProfileImg');
+    if (setImgEl && savedImg) {
+        setImgEl.src = savedImg;
     }
 }
+
+// Profile Photo එක තෝරාගත් විට එය සුරැකීමේ ක්‍රියාවලිය
+function setupImageUpload() {
+    const imgInput = document.getElementById('imgInput');
+    if (imgInput) {
+        imgInput.onchange = function(e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function() {
+                const preview = document.getElementById('profilePreview');
+                const plusIcon = document.getElementById('plusIcon');
+                if (preview) {
+                    preview.src = reader.result;
+                    preview.style.display = 'block';
+                    if (plusIcon) plusIcon.style.display = 'none';
+                }
+                localStorage.setItem('profileImage', reader.result);
+                updateHomeUI(); // වහාම Home පිටුවේ පින්තූරය යාවත්කාලීන කිරීමට
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    }
+}
+
+// සුරකින ලද පින්තූරය Load කිරීම
+function loadProfileImage() {
+    const savedImg = localStorage.getItem('profileImage');
+    const preview = document.getElementById('profilePreview');
+    const plusIcon = document.getElementById('plusIcon');
+    
+    if (savedImg && preview) {
+        preview.src = savedImg;
+        preview.style.display = 'block';
+        if (plusIcon) plusIcon.style.display = 'none';
+    }
+}
+
+window.saveUserProfile = (event) => {
+    if(event) event.preventDefault();
+    
+    const name = document.getElementById('userNameInput').value;
+    const email = document.getElementById('userEmailInput').value;
+
+    if (!name || !email) {
+        alert("Please fill in all fields");
+        return;
+    }
+
+    const profile = { name, email };
+    localStorage.setItem('userProfile', JSON.stringify(profile));
+    
+    updateHomeUI();
+    showCustomAlert("Profile Updated Successfully!", "index.html"); 
+};
 
 window.toggleDarkMode = () => {
     const appFrame = document.getElementById('app-frame');
     if (!appFrame) return;
-
-    // පන්තිය ඇත්නම් ඉවත් කරයි, නැත්නම් එකතු කරයි
     const isDark = appFrame.classList.toggle('dark-theme');
-    
-    // තත්ත්වය localStorage හි සුරැකීම
     localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
 };
+
 // ==========================================
 // 6. Notifications Logic
 // ==========================================
@@ -197,6 +289,7 @@ function renderNotifications() {
     }
 
     const today = new Date().setHours(0,0,0,0);
+    
     [...tasks].reverse().forEach(task => {
         let type = "New Task", icon = "📌", colorClass = "blue-bg", message = `Task "<strong>${task.text}</strong>" added.`;
         const taskDate = new Date(task.timestamp).setHours(0,0,0,0);
@@ -213,13 +306,16 @@ function renderNotifications() {
         }
 
         const timeAgo = calculateTimeAgo(task.id);
+        
         notifContainer.innerHTML += `
             <div class="notif-card">
                 <div class="notif-icon-box ${colorClass}">${icon}</div>
                 <div class="notif-body">
                     <div class="notif-title-row"><h4>${type}</h4><small>${timeAgo}</small></div>
                     <p>${message}</p>
-                    <div class="notif-actions"><span class="action-link" onclick="location.href='tasks.html?id=${task.id}'">View Details</span></div>
+                    <div class="notif-actions">
+                        <span class="action-link" onclick="location.href='task.html?id=${task.id}'">View Details</span>
+                    </div>
                 </div>
             </div>`;
     });
@@ -236,50 +332,78 @@ function calculateTimeAgo(ts) {
 }
 
 // ==========================================
-// 7. Security Page Buttons
+// 7. Security Page Buttons (Updated with Custom Alert)
 // ==========================================
 function setupSecurityButtons() {
     const securityButtons = document.querySelectorAll('.sec-action-btn');
     securityButtons.forEach(button => {
         button.onclick = function() {
-            const action = this.innerText;
-            alert(`${action} feature is being activated...`);
-            this.style.opacity = '0.7';
+            const action = this.innerText; 
+            showCustomAlert(`${action} process has been started successfully!`);
+            
+            this.style.opacity = '0.5';
+            const originalText = this.innerText;
+            this.innerText = "Processing...";
+            
             setTimeout(() => {
                 this.style.opacity = '1';
-                alert(`${action} has been successfully updated.`);
-            }, 1000);
+                this.innerText = originalText;
+            }, 1500);
         };
     });
 }
 
 // ==========================================
-// 8. Initialization (DOMContentLoaded) - RECORRECTED
+// 8. Custom Modal Alert Logic
+// ==========================================
+function showCustomAlert(message, redirectUrl = null) {
+    const modal = document.getElementById('customAlert');
+    if (!modal) return;
+    document.getElementById('alertMessage').innerText = message;
+    modal.style.display = 'flex';
+    window.pendingRedirect = redirectUrl;
+}
+
+function closeAlert() {
+    const modal = document.getElementById('customAlert');
+    if (modal) modal.style.display = 'none';
+    if (window.pendingRedirect) {
+        window.location.href = window.pendingRedirect;
+    }
+}
+
+// ==========================================
+// 9. Initialization (DOMContentLoaded) - UPDATED
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Dark Mode Persistence Check
     const darkModeStatus = localStorage.getItem('darkMode');
     const appFrame = document.getElementById('app-frame');
     const toggleSwitch = document.getElementById('darkModeToggle');
 
-    if (darkModeStatus === 'enabled' && appFrame) {
-        appFrame.classList.add('dark-theme');
-        if (toggleSwitch) {
-            toggleSwitch.checked = true;
+    const currentPage = window.location.pathname.split("/").pop();
+
+    if (currentPage !== "Signup.html" && currentPage !== "signup.html") {
+        if (darkModeStatus === 'enabled' && appFrame) {
+            appFrame.classList.add('dark-theme');
+            if (toggleSwitch) toggleSwitch.checked = true;
         }
+    } else {
+        if (appFrame) appFrame.classList.remove('dark-theme');
     }
 
-    // 2. Data Rendering
+    setupFilters(); 
     renderCalendar();
     renderTasks();
     updateHomeUI();
     loadSettingsData();
     renderNotifications();
+    setupImageUpload(); // පින්තූර Upload කිරීමේ හැකියාව සක්‍රීය කිරීම
+    loadProfileImage(); // සුරකින ලද පින්තූරය පෙන්වීම
 
-    // 3. Security Check
-    if (document.querySelector('.security-screen')) setupSecurityButtons();
+    if (document.querySelectorAll('.sec-action-btn').length > 0) {
+        setupSecurityButtons();
+    }
 
-    // 4. URL Task Highlight
     const taskId = new URLSearchParams(window.location.search).get('id');
     if (taskId) {
         setTimeout(() => {
@@ -291,3 +415,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     }
 });
+
+function processLogout() {
+    if(confirm("Are you sure you want to logout? This will clear your data.")) {
+        localStorage.clear(); 
+        sessionStorage.clear();
+        alert("Logged out and data cleared!");
+        window.location.href = "Signup.html";
+    }
+}

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="src/styles/style.css">
 </head>
 <body>
-    <div class="mobile-frame edit-screen" id="app-frame">
+    <div class="mobile-frame" id="app-frame">
         <div class="login-decor">
             <div class="circle-1"></div>
             <div class="circle-2"></div>
@@ -28,11 +28,12 @@
                 <input type="file" id="imgInput" hidden accept="image/*">
             </div>
 
-            <div class="edit-form-container">
+            <form class="edit-form-container" onsubmit="saveUserProfile(event)">
                 <div class="input-field-v3">
                     <label>Name</label>
-                    <input type="text" id="editName" placeholder="Amy Young">
+                    <input type="text" id="userNameInput" placeholder="Enter your name" required>
                 </div>
+
                 <div class="input-field-v3">
                     <label>Department</label>
                     <select id="editDept">
@@ -41,16 +42,19 @@
                         <option value="Design">Design</option>
                     </select>
                 </div>
+
                 <div class="input-field-v3">
                     <label>Phone no.</label>
-                    <input type="text" id="editPhone" placeholder="+98 1245560090">
+                    <input type="text" id="editPhone" placeholder="+94 123 456 789">
                 </div>
+
                 <div class="input-field-v3">
                     <label>E-Mail</label>
-                    <input type="email" id="editEmail" placeholder="amyyoung@random.com">
+                    <input type="email" id="userEmailInput" placeholder="Enter your email" required>
                 </div>
-                <button class="save-changes-btn" onclick="saveUserProfile()">Save Changes</button>
-            </div>
+
+                <button type="submit" class="save-changes-btn">Save Changes</button>
+            </form>
         </main>
 
         <footer class="footer-nav-square">
@@ -60,6 +64,16 @@
             <a href="setting.html" class="nav-item"><span>⚙️</span><small>Settings</small></a>
         </footer>
     </div>
+
+    <div id="customAlert" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-icon">✅</div>
+            <p id="alertMessage">Success!</p>
+            <button onclick="closeAlert()">OK</button>
+        </div>
+    </div>
+
+    <div id="menu-overlay" class="menu-overlay"></div>
 
     <script src="src/styles/script/main.js"></script>
 </body>
