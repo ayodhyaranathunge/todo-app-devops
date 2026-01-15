@@ -1,64 +1,91 @@
-# todo-app-devops
-Advanced Git &amp; Devops Assignment - Todo App
+Group Information
+Student 1: R.M.Ayodhya Poojani - ITBNM-2313-0056 - Role: DevOps Engineer
 
-Task Management Web Application 
-A fully responsive, mobile-first Task Management web application designed to help users organize their daily routines, track progress, and manage tasks efficiently. This project features a clean Pinterest-inspired UI with advanced functionalities like local storage persistence and a global dark mode.
+Student 2: Prasadika Bandara - ITBNM-2313-0006 - Role: Full Stack Developer
 
-✨ Key Features
-User Profile Management: Personalized dashboard with dynamic user greetings and profile editing capabilities.
+// Project Description
+Task Manager Pro is a robust, professional-grade Task Management Application developed to optimize daily productivity. The application integrates a dynamic interactive calendar, real-time task filtering, and persistent data synchronization for user profiles and images using LocalStorage. Beyond its core functionality, the project showcases an industry-standard DevOps architecture, featuring a multi-branch Git strategy, automated CI/CD pipelines via GitHub Actions, and seamless cloud deployment. It bridges the gap between sophisticated frontend design and automated software delivery workflows.
 
-Interactive Calendar: A custom-built calendar view to organize and view tasks based on specific dates.
+// Live Deployment
+🔗 Live URL: [ඔබේ Vercel/Netlify Link එක මෙතැනට පේස්ට් කරන්න]
 
-Advanced Task Operations: Full CRUD (Create, Read, Update, Delete) support for tasks with completion toggling.
+// Technologies Used
+**Frontend: HTML5, CSS3, JavaScript (ES6+)
 
-Progress Tracking: Visual progress bar on the home screen that calculates completion percentage in real-time.
+**DevOps: GitHub Actions (CI/CD)
 
-Global Dark Mode: Persistent dark theme that can be toggled via settings, affecting the entire application frame.
+**Deployment:  Netlify
 
-Smart Notifications: Automated reminders for missed tasks, upcoming deadlines, and task additions.
+**Version Control: Git with Branching Strategy
 
-Fully Responsive Design: Mobile-frame architecture ensuring a consistent experience across different screen sizes.
+//Features
+Dynamic Calendar: View and select dates to manage specific daily tasks.
 
-✨ Tech Stack
-HTML5: Semantic structure for accessibility and SEO.
+Persistent Storage: User profiles (Name, Email, Photo) and Tasks remain saved even after page reloads using LocalStorage.
 
-CSS3: Custom styling using Flexbox, CSS Grid, and animations for a modern UI.
+Professional Dark Mode: Optimized dark theme that adapts across all pages (excluding Signup).
 
-JavaScript (ES6+): Core logic for task handling, calendar rendering, and theme management.
+Custom Notifications: Professional Modal-based alerts for system actions instead of browser default popups.
 
-LocalStorage: Used for client-side data persistence (Tasks, Profile, and Theme settings).
+Security Actions: Simulated security features like App Lock and Data Protection with real-time feedback.
 
-✨Project Structure
-Plaintext
+// Branch Strategy
+We strictly followed the GitFlow branching model for this project:
 
-/
-├── index.html           # Home Dashboard
-├── task.html            # Task Management & Calendar
-├── profile.html         # Edit Profile Page
-├── setting.html         # Settings & Theme Toggle
-├── notification.html    # Alerts & Notifications
-├── security.html        # Security Settings
-├── logout.html          # Logout Confirmation
-└── src/
-    └── styles/
-        ├── style.css    # Global Styles & Dark Theme
-        └── script/
-            └── main.js  # Application Logic
-Getting Started
-Clone the Repository:
+main: Production-ready code only.
 
-Bash
+develop: Integration branch for features.
 
-git clone https://github.com/your-username/task-manager-app.git
-Run the App: Simply open index.html in any modern web browser.
+feature/*: Individual branches for specific feature development .
 
-Data Persistence: Your tasks and settings will remain saved even after refreshing or closing the browser thanks to LocalStorage.
+// Individual Contributions
+👩‍🦰R.M.Ayodhya Poojani (DevOps Engineer)
 
-✨ Verification Checklist
-#. All pages are linked correctly.
+*Initialized repository structure and branch management (main, develop).
 
-#. Dark Mode persists across page navigation.
+*Configured .github/workflows/ci.yml for automated code testing.
 
-#. Task progress updates dynamically.
+*Implemented production deployment pipeline via GitHub Actions.
 
-#. Responsive mobile-frame UI.
+*Successfully resolved an intentional Merge Conflict between feature branches.
+
+👩‍🦰Prasadika Bandara (Full Stack Developer)
+
+*Developed the core Task Management logic and Dynamic Calendar.
+
+*Implemented LocalStorage persistence for Profile Data and Images.
+
+*Designed the responsive UI and professional Dark Mode theme.
+
+*Integrated Custom Modal Alerts across all application modules.
+
+// Setup Instructions
+Prerequisites
+*Git installed
+
+*A modern web browser
+
+//Installation
+
+
+#. Clone the repository
+git clone https://github.com/[your-username]/[repo-name].git
+
+#. Navigate to project directory
+cd [repo-name]
+
+#.Open the application
+#.Since this is a static site, you can simply open index.html 
+#.or use Live Server in VS Code.
+
+// Deployment Process
+Our CI/CD pipeline works as follows:
+
+1.Continuous Integration: Every push to the develop branch triggers a CI build to verify code integrity.
+
+2.Continuous Deployment: Merging develop into main automatically triggers a production build and deploys the latest version to the Live URL.
+
+// Build Status
+CI Pipeline: Passing
+
+Production Deploy: Active
