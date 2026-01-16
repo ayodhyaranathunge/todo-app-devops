@@ -1,14 +1,14 @@
-// ==========================================
+
 // 1. Global Variables & Initial Data
-// ==========================================
+
 let selectedDate = new Date();
 let currentViewDate = new Date();
 let tasks = JSON.parse(localStorage.getItem('myTasks')) || [];
 let currentFilter = 'all'; 
 
-// ==========================================
+
 // 2. Calendar Logic (Tasks Page)
-// ==========================================
+
 function renderCalendar() {
     const daysContainer = document.getElementById('calendar-days');
     const display = document.getElementById('month-year-display');
@@ -59,9 +59,9 @@ if (document.getElementById('prev-month')) {
     };
 }
 
-// ==========================================
+
 // 3. Task Management (Add, Toggle, Delete, Render)
-// ==========================================
+
 function saveTask() {
     const input = document.getElementById('todo-input');
     if (!input || input.value.trim() === "") return;
@@ -145,16 +145,16 @@ function updateStorageAndUI() {
     if (document.getElementById('homeUserName')) updateHomeUI();
 }
 
-// ==========================================
+
 // 4. Home UI & Side Menu
-// ==========================================
+
 function updateHomeUI() {
     const profile = JSON.parse(localStorage.getItem('userProfile'));
     if (profile && document.getElementById('homeUserName')) {
         document.getElementById('homeUserName').innerText = `Hello, ${profile.name}!`;
     }
 
-    // Home පිටුවේ පින්තූරය පෙන්වීම
+    // Showing the image on the home page
     const homeImg = document.getElementById('homeProfileImg');
     const savedImg = localStorage.getItem('profileImage');
     if (homeImg && savedImg) homeImg.src = savedImg;
@@ -185,13 +185,14 @@ function toggleSidebar() {
     }
 }
 
-// ==========================================
+
 // 5. Settings, Profile Data & Dark Mode
-// ==========================================
-// Settings පිටුවට දත්ත ලබා දෙන ශ්‍රිතය යාවත්කාලීන කරන ලදී
+
+// The function that returns data to the Settings page was updated
 function loadSettingsData() {
     const savedProfile = JSON.parse(localStorage.getItem('userProfile'));
-    const savedImg = localStorage.getItem('profileImage'); // සුරකින ලද පින්තූරය ලබා ගැනීම
+    const savedImg = localStorage.getItem('profileImage'); 
+    // Retrieving a saved picture
 
     if (savedProfile) {
         if (document.getElementById('setUserName')) 
@@ -203,14 +204,14 @@ function loadSettingsData() {
         if (document.getElementById('userEmailInput')) document.getElementById('userEmailInput').value = savedProfile.email;
     }
 
-    // Settings පිටුවේ පින්තූරය පෙන්වීම
+    //Showing the image on the Settings page  
     const setImgEl = document.getElementById('setProfileImg');
     if (setImgEl && savedImg) {
         setImgEl.src = savedImg;
     }
 }
 
-// Profile Photo එක තෝරාගත් විට එය සුරැකීමේ ක්‍රියාවලිය
+// The process of saving a profile photo when it is selected
 function setupImageUpload() {
     const imgInput = document.getElementById('imgInput');
     if (imgInput) {
@@ -227,7 +228,8 @@ function setupImageUpload() {
                     if (plusIcon) plusIcon.style.display = 'none';
                 }
                 localStorage.setItem('profileImage', reader.result);
-                updateHomeUI(); // වහාම Home පිටුවේ පින්තූරය යාවත්කාලීන කිරීමට
+                updateHomeUI(); 
+                // To update he home page
             }
 
             if (file) {
@@ -237,7 +239,7 @@ function setupImageUpload() {
     }
 }
 
-// සුරකින ලද පින්තූරය Load කිරීම
+// Loading a saved image
 function loadProfileImage() {
     const savedImg = localStorage.getItem('profileImage');
     const preview = document.getElementById('profilePreview');
@@ -275,9 +277,9 @@ window.toggleDarkMode = () => {
     localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
 };
 
-// ==========================================
+
 // 6. Notifications Logic
-// ==========================================
+
 function renderNotifications() {
     const notifContainer = document.getElementById('notif-container');
     if (!notifContainer) return;
@@ -331,9 +333,9 @@ function calculateTimeAgo(ts) {
     return `${Math.floor(hr / 24)}d ago`;
 }
 
-// ==========================================
+
 // 7. Security Page Buttons (Updated with Custom Alert)
-// ==========================================
+
 function setupSecurityButtons() {
     const securityButtons = document.querySelectorAll('.sec-action-btn');
     securityButtons.forEach(button => {
@@ -353,9 +355,9 @@ function setupSecurityButtons() {
     });
 }
 
-// ==========================================
+
 // 8. Custom Modal Alert Logic
-// ==========================================
+
 function showCustomAlert(message, redirectUrl = null) {
     const modal = document.getElementById('customAlert');
     if (!modal) return;
@@ -372,9 +374,9 @@ function closeAlert() {
     }
 }
 
-// ==========================================
+
 // 9. Initialization (DOMContentLoaded) - UPDATED
-// ==========================================
+
 document.addEventListener('DOMContentLoaded', () => {
     const darkModeStatus = localStorage.getItem('darkMode');
     const appFrame = document.getElementById('app-frame');
@@ -397,8 +399,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHomeUI();
     loadSettingsData();
     renderNotifications();
-    setupImageUpload(); // පින්තූර Upload කිරීමේ හැකියාව සක්‍රීය කිරීම
-    loadProfileImage(); // සුරකින ලද පින්තූරය පෙන්වීම
+    setupImageUpload(); // Enabling the ability to upload images
+    loadProfileImage(); // Displaying the saved image
 
     if (document.querySelectorAll('.sec-action-btn').length > 0) {
         setupSecurityButtons();
