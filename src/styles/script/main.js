@@ -154,7 +154,7 @@ function updateHomeUI() {
         document.getElementById('homeUserName').innerText = `Hello, ${profile.name}!`;
     }
 
-    // Showing the image on the home page
+    // Showing the image on the home page.
     const homeImg = document.getElementById('homeProfileImg');
     const savedImg = localStorage.getItem('profileImage');
     if (homeImg && savedImg) homeImg.src = savedImg;
