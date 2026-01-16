@@ -1,14 +1,10 @@
-
 // 1. Global Variables & Initial Data
-
 let selectedDate = new Date();
 let currentViewDate = new Date();
 let tasks = JSON.parse(localStorage.getItem('myTasks')) || [];
 let currentFilter = 'all'; 
 
-
-//2.Calendar Logic (Tasks Page)
-
+// 2. Calendar Logic (Tasks Page)
 function renderCalendar() {
     const daysContainer = document.getElementById('calendar-days');
     const display = document.getElementById('month-year-display');
@@ -59,9 +55,7 @@ if (document.getElementById('prev-month')) {
     };
 }
 
-
 // 3. Task Management (Add, Toggle, Delete, Render)
-
 function saveTask() {
     const input = document.getElementById('todo-input');
     if (!input || input.value.trim() === "") return;
@@ -145,16 +139,13 @@ function updateStorageAndUI() {
     if (document.getElementById('homeUserName')) updateHomeUI();
 }
 
-
 // 4. Home UI & Side 
-
 function updateHomeUI() {
     const profile = JSON.parse(localStorage.getItem('userProfile'));
     if (profile && document.getElementById('homeUserName')) {
         document.getElementById('homeUserName').innerText = `Hello, ${profile.name}!`;
     }
 
-    // Showing the image on the home page.
     const homeImg = document.getElementById('homeProfileImg');
     const savedImg = localStorage.getItem('profileImage');
     if (homeImg && savedImg) homeImg.src = savedImg;
@@ -185,14 +176,10 @@ function toggleSidebar() {
     }
 }
 
-
 // 5. Settings, Profile Data & Dark Mode
-
-// The function that returns data to the Settings page was updated
 function loadSettingsData() {
     const savedProfile = JSON.parse(localStorage.getItem('userProfile'));
     const savedImg = localStorage.getItem('profileImage'); 
-    // Retrieving a saved picture
 
     if (savedProfile) {
         if (document.getElementById('setUserName')) 
@@ -200,18 +187,19 @@ function loadSettingsData() {
         if (document.getElementById('setUserEmail')) 
             document.getElementById('setUserEmail').innerText = savedProfile.email;
         
-        if (document.getElementById('userNameInput')) document.getElementById('userNameInput').value = savedProfile.name;
-        if (document.getElementById('userEmailInput')) document.getElementById('userEmailInput').value = savedProfile.email;
+        if (document.getElementById('userNameInput')) 
+            document.getElementById('userNameInput').value = savedProfile.name;
+        if (document.getElementById('userEmailInput')) 
+            document.getElementById('userEmailInput').value = savedProfile.email;
     }
 
-    //Showing the image on the Settings page  
     const setImgEl = document.getElementById('setProfileImg');
     if (setImgEl && savedImg) {
         setImgEl.src = savedImg;
     }
 }
 
-// The process of saving a profile photo when it is selected
+// 6. Profile Image Upload
 function setupImageUpload() {
     const imgInput = document.getElementById('imgInput');
     if (imgInput) {
@@ -229,17 +217,13 @@ function setupImageUpload() {
                 }
                 localStorage.setItem('profileImage', reader.result);
                 updateHomeUI(); 
-                // To update he home page
             }
 
-            if (file) {
-                reader.readAsDataURL(file);
-            }
+            if (file) reader.readAsDataURL(file);
         }
     }
 }
 
-// Loading a saved image
 function loadProfileImage() {
     const savedImg = localStorage.getItem('profileImage');
     const preview = document.getElementById('profilePreview');
@@ -252,6 +236,7 @@ function loadProfileImage() {
     }
 }
 
+// 7. Save Profile
 window.saveUserProfile = (event) => {
     if(event) event.preventDefault();
     
@@ -267,7 +252,9 @@ window.saveUserProfile = (event) => {
     localStorage.setItem('userProfile', JSON.stringify(profile));
     
     updateHomeUI();
-    showCustomAlert("Profile Updated Successfully!", "index.html"); 
+    loadSettingsData();
+    
+    showCustomAlert("Profile Updated Successfully!", null);
 };
 
 window.toggleDarkMode = () => {
@@ -277,9 +264,7 @@ window.toggleDarkMode = () => {
     localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
 };
 
-
-// 6. Notifications Logic
-
+// 8. Notifications Logic
 function renderNotifications() {
     const notifContainer = document.getElementById('notif-container');
     if (!notifContainer) return;
@@ -333,9 +318,7 @@ function calculateTimeAgo(ts) {
     return `${Math.floor(hr / 24)}d ago`;
 }
 
-
-// 7. Security Page Buttons (Updated with Custom Alert)
-
+// 9. Security Buttons
 function setupSecurityButtons() {
     const securityButtons = document.querySelectorAll('.sec-action-btn');
     securityButtons.forEach(button => {
@@ -355,9 +338,7 @@ function setupSecurityButtons() {
     });
 }
 
-
-// 8. Custom Modal Alert Logic
-
+// 10. Custom Modal Alert
 function showCustomAlert(message, redirectUrl = null) {
     const modal = document.getElementById('customAlert');
     if (!modal) return;
@@ -374,9 +355,7 @@ function closeAlert() {
     }
 }
 
-
-// 9. Initialization (DOMContentLoaded) - UPDATED
-
+// 11. DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
     const darkModeStatus = localStorage.getItem('darkMode');
     const appFrame = document.getElementById('app-frame');
@@ -399,8 +378,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHomeUI();
     loadSettingsData();
     renderNotifications();
-    setupImageUpload(); // Enabling the ability to upload images
-    loadProfileImage(); // Displaying the saved image
+    setupImageUpload();
+    loadProfileImage();
 
     if (document.querySelectorAll('.sec-action-btn').length > 0) {
         setupSecurityButtons();
@@ -418,11 +397,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// 12. Logout
 function processLogout() {
-    if(confirm("Are you sure you want to logout? This will clear your data.")) {
-        localStorage.clear(); 
-        sessionStorage.clear();
-        alert("Logged out and data cleared!");
-        window.location.href = "Signup.html";
-    }
+    localStorage.clear(); 
+    sessionStorage.clear();
+    showCustomAlert("Logged out and all your data has been cleared successfully!", "index.html");
 }

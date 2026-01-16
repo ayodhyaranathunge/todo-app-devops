@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+    <div class="mobile-frame"  id="app-frame">
+        <div class="login-decor">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+        </div>
+
+        <header class="home-header">
+            <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+            <h2 class="do-it-now">DO IT NOW</h2>
+            <div class="notif-icon-top" onclick="location.href='notification.html'" style="cursor:pointer;">🔔</div>
+        </header>
+
+        <main class="home-content">
+            <div class="welcome-box">
+                <h2 id="homeUserName">Hello, Amali!</h2>
+                <p>You have <span id="pendingCount" style="font-weight:600; color:#3c40c6;">0</span> tasks for today.</p>
+            </div>
+
+            <section class="categories-wide">
+                <div class="cat-card-long pink-grad" onclick="location.href='task.html?cat=Work'">
+                    <span id="count-Work">Work <br><small>0 Tasks</small></span>
+                    <div class="icon-circle">🏠</div>
+                </div>
+                <div class="cat-card-long green-grad" onclick="location.href='task.html?cat=Personal'">
+                    <span id="count-Personal">Personal <br><small>0 Tasks</small></span>
+                    <div class="icon-circle">🏠</div>
+                </div>
+                <div class="cat-card-long orange-grad" onclick="location.href='task.html?cat=Study'">
+                    <span id="count-Study">Study <br><small>0 Tasks</small></span>
+                    <div class="icon-circle">🎓</div>
+                </div>
+            </section>
+
+            <div class="progress-section">
+                <h3>Daily Progress</h3>
+                <div class="progress-container">
+                    <div class="progress-bar" id="mainProgressBar"></div>
+                </div>
+                <p id="progressText">0% Completed</p>
+            </div>
+        </main>
+
+        <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>Menu</h3>
+                <span class="close-btn" onclick="toggleSidebar()">×</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="home.html">🏠 Home</a>
+                <a href="task.html">📋 My Tasks</a>
+                <a href="notification.html">🔔 Notifications</a>
+                <a href="profile.html">👤 Profile</a>
+                <a href="setting.html">⚙️ Settings</a>
+                <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 20px 0;">
+                <a href="logout.html" class="logout-link" style="color: #ff7675;">🚪 Logout</a>
+            </nav>
+        </div>
+
+        <footer class="footer-nav-square">
+            <a href="home.html" class="nav-item active"><span>🏠</span><small>Home</small></a>
+            <a href="task.html" class="nav-item"><span>📋</span><small>Tasks</small></a>
+            <a href="profile.html" class="nav-item"><span>👤</span><small>Profile</small></a>
+            <a href="setting.html" class="nav-item"><span>⚙️</span><small>Settings</small></a>
+        </footer>
+    </div>
+<div id="customAlert" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-icon">✅</div>
+            <p id="alertMessage">Success!</p>
+            <button onclick="closeAlert()">OK</button>
+        </div>
+    </div>
+
+    <div id="menu-overlay" class="menu-overlay"></div>
+
+    <script src="src/styles/script/main.js"></script>
+</body>
+</html>
+    
