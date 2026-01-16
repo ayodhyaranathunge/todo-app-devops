@@ -146,7 +146,7 @@ function updateStorageAndUI() {
 }
 
 
-// 4. Home UI & Side Menu
+// 4. Home UI & Side 
 
 function updateHomeUI() {
     const profile = JSON.parse(localStorage.getItem('userProfile'));

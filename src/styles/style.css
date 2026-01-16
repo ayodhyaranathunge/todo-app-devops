@@ -166,7 +166,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #0101b6; /* Dark Blue */
+    background: #0101b6; 
     display: flex;
     justify-content: space-around;
     padding: 12px 0;
