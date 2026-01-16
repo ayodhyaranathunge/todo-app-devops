@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout - Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+    <div class="mobile-frame" id="app-frame">
+        <div class="login-decor">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+        </div>
+
+        <main class="logout-content">
+            <div class="logout-icon-container">
+                <span class="logout-emoji">👋</span>
+            </div>
+            
+            <h2>Oh no! You're leaving...</h2>
+            <p>Are you sure you want to log out?</p>
+
+            <div class="logout-actions">
+                <button class="confirm-logout-btn" onclick="processLogout()">Yes, Log Me Out</button>
+                <button class="cancel-logout-btn" onclick="location.href='index.html'">Nah, Just Kidding</button>
+            </div>
+        </main>
+
+        <footer class="footer-nav-square">
+            <a href="index.html" class="nav-item"><span>🏠</span><small>Home</small></a>
+            <a href="task.html" class="nav-item"><span>📋</span><small>Tasks</small></a>
+            <a href="profile.html" class="nav-item"><span>👤</span><small>Profile</small></a>
+            <a href="setting.html" class="nav-item"><span>⚙️</span><small>Settings</small></a>
+        </footer>
+    </div>
+
+    <div id="customAlert" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-icon">✅</div>
+            <p id="alertMessage">Success!</p>
+            <button onclick="closeAlert()">OK</button>
+        </div>
+    </div>
+
+    <div id="menu-overlay" class="menu-overlay"></div>
+
+    <script src="src/styles/script/main.js"></script>
+</body>
+</html>

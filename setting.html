@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+    <div class="mobile-frame" id="app-frame">
+        <div class="login-decor">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+        </div>
+
+        <header class="header-bar-v2">
+            <div class="back-btn-header" onclick="history.back()">←</div>
+            <h2 class="header-title">Settings</h2>
+            <div class="notif-icon-top" onclick="location.href='notification.html'" style="cursor:pointer;">🔔</div>
+        </header>
+
+        <main class="settings-content">
+            
+               <div class="user-info-card" style="display: flex; align-items: center; padding: 20px; gap: 15px;">
+    
+    <img id="setProfileImg" src="assets/default-avatar.png" 
+         style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #fff;">
+    
+    <div style="text-align: left;">
+        <h3 id="setUserName" style="margin: 0; font-size: 18px;">name</h3>
+        <p id="setUserEmail" style="margin: 0; font-size: 12px; opacity: 0.8;">email</p>
+    </div>
+
+</div>
+              
+
+            <div class="settings-list">
+                <div class="setting-item" onclick="location.href='profile.html'">
+                    <span>👤 Edit Profile</span>
+                    <span class="arrow">›</span>
+                </div>
+
+                <div class="setting-item">
+                    <span>🔔 Notifications</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <span>🌙 Dark Mode</span>
+                    <label class="switch">
+                        <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item" onclick="location.href='security.html'">
+                    <span>🔒 Security</span>
+                    <span class="arrow">›</span>
+                </div>
+
+                <div class="setting-item" onclick="location.href='logout.html'">
+                    <span>🚪 Logout</span>
+                    <span class="arrow">›</span>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer-nav-square">
+            <a href="index.html" class="nav-item"><span>🏠</span><small>Home</small></a>
+            <a href="task.html" class="nav-item"><span>📋</span><small>Tasks</small></a>
+            <a href="profile.html" class="nav-item"><span>👤</span><small>Profile</small></a>
+            <a href="setting.html" class="nav-item active"><span>⚙️</span><small>Settings</small></a>
+        </footer>
+    </div>
+    <div id="customAlert" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-icon">✅</div>
+            <p id="alertMessage">Success!</p>
+            <button onclick="closeAlert()">OK</button>
+        </div>
+    </div>
+
+    <div id="menu-overlay" class="menu-overlay"></div>
+
+    <div id="customAlert" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-icon">✅</div>
+            <p id="alertMessage">Success!</p>
+            <button onclick="closeAlert()">OK</button>
+        </div>
+    </div>
+
+    <div id="menu-overlay" class="menu-overlay"></div>
+
+    <script src="src/styles/script/main.js"></script>
+</body>
+</html>
