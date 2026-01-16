@@ -416,11 +416,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+//logoutfunction
+
+// ==========================================
+// Logout ක්‍රියාවලිය (නිවැරදි කරන ලද අවසන් කේතය)
+// ==========================================
 function processLogout() {
-    if(confirm("Are you sure you want to logout? This will clear your data.")) {
-        localStorage.clear(); 
-        sessionStorage.clear();
-        alert("Logged out and data cleared!");
-        window.location.href = "Signup.html";
-    }
+    // 1. LocalStorage සහ SessionStorage හි ඇති සියලුම දත්ත මකා දැමීම
+    localStorage.clear(); 
+    sessionStorage.clear();
+    
+    // 2. Custom Alert එක පෙන්වා, එහි OK එබූ පසු index.html වෙත යොමු කිරීම
+    // මෙහිදී පණිවිඩය සහ යන පිටුව (index.html) නිවැරදිව ලබා දී ඇත.
+    showCustomAlert("Logged out and all your data has been cleared successfully!", "index.html");
 }
