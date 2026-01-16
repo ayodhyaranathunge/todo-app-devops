@@ -144,7 +144,7 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Scroll Area & Footer (Maintain) */
+/*Scroll Area & Footer (Maintain) */
 .home-task-list {
     flex: 1;
     overflow-y: auto;

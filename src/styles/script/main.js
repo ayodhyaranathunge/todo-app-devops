@@ -7,7 +7,7 @@ let tasks = JSON.parse(localStorage.getItem('myTasks')) || [];
 let currentFilter = 'all'; 
 
 
-// 2. Calendar Logic (Tasks Page)
+//2. Calendar Logic (Tasks Page)
 
 function renderCalendar() {
     const daysContainer = document.getElementById('calendar-days');
