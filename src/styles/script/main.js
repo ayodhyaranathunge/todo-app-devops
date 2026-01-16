@@ -154,7 +154,6 @@ function updateHomeUI() {
         document.getElementById('homeUserName').innerText = `Hello, ${profile.name}!`;
     }
 
-    // Home පිටුවේ පින්තූරය පෙන්වීම
     const homeImg = document.getElementById('homeProfileImg');
     const savedImg = localStorage.getItem('profileImage');
     if (homeImg && savedImg) homeImg.src = savedImg;
@@ -188,10 +187,9 @@ function toggleSidebar() {
 // ==========================================
 // 5. Settings, Profile Data & Dark Mode
 // ==========================================
-// Settings පිටුවට දත්ත ලබා දෙන ශ්‍රිතය යාවත්කාලීන කරන ලදී
 function loadSettingsData() {
     const savedProfile = JSON.parse(localStorage.getItem('userProfile'));
-    const savedImg = localStorage.getItem('profileImage'); // සුරකින ලද පින්තූරය ලබා ගැනීම
+    const savedImg = localStorage.getItem('profileImage'); 
 
     if (savedProfile) {
         if (document.getElementById('setUserName')) 
@@ -203,14 +201,12 @@ function loadSettingsData() {
         if (document.getElementById('userEmailInput')) document.getElementById('userEmailInput').value = savedProfile.email;
     }
 
-    // Settings පිටුවේ පින්තූරය පෙන්වීම
     const setImgEl = document.getElementById('setProfileImg');
     if (setImgEl && savedImg) {
         setImgEl.src = savedImg;
     }
 }
 
-// Profile Photo එක තෝරාගත් විට එය සුරැකීමේ ක්‍රියාවලිය
 function setupImageUpload() {
     const imgInput = document.getElementById('imgInput');
     if (imgInput) {
@@ -227,7 +223,7 @@ function setupImageUpload() {
                     if (plusIcon) plusIcon.style.display = 'none';
                 }
                 localStorage.setItem('profileImage', reader.result);
-                updateHomeUI(); // වහාම Home පිටුවේ පින්තූරය යාවත්කාලීන කිරීමට
+                updateHomeUI(); 
             }
 
             if (file) {
@@ -237,7 +233,6 @@ function setupImageUpload() {
     }
 }
 
-// සුරකින ලද පින්තූරය Load කිරීම
 function loadProfileImage() {
     const savedImg = localStorage.getItem('profileImage');
     const preview = document.getElementById('profilePreview');
@@ -250,6 +245,7 @@ function loadProfileImage() {
     }
 }
 
+// Profile එක Save කරන විට index.html වෙත යාම වළක්වා ඇත
 window.saveUserProfile = (event) => {
     if(event) event.preventDefault();
     
@@ -264,8 +260,11 @@ window.saveUserProfile = (event) => {
     const profile = { name, email };
     localStorage.setItem('userProfile', JSON.stringify(profile));
     
-    updateHomeUI();
-    showCustomAlert("Profile Updated Successfully!", "index.html"); 
+    updateHomeUI(); // දත්ත වහාම App එක පුරා යාවත්කාලීන කරයි
+    loadSettingsData(); // Settings පිටුවේ දත්තද යාවත්කාලීන කරයි
+    
+    // මෙහි null ලබා දීමෙන් Alert එක OK කළ විට පිටුව මාරු නොවේ
+    showCustomAlert("Profile Updated Successfully!", null);
 };
 
 window.toggleDarkMode = () => {
@@ -397,8 +396,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHomeUI();
     loadSettingsData();
     renderNotifications();
-    setupImageUpload(); // පින්තූර Upload කිරීමේ හැකියාව සක්‍රීය කිරීම
-    loadProfileImage(); // සුරකින ලද පින්තූරය පෙන්වීම
+    setupImageUpload(); 
+    loadProfileImage(); 
 
     if (document.querySelectorAll('.sec-action-btn').length > 0) {
         setupSecurityButtons();
@@ -416,17 +415,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-//logoutfunction
-
 // ==========================================
-// Logout ක්‍රියාවලිය (නිවැරදි කරන ලද අවසන් කේතය)
+// Logout ක්‍රියාවලිය
 // ==========================================
 function processLogout() {
-    // 1. LocalStorage සහ SessionStorage හි ඇති සියලුම දත්ත මකා දැමීම
     localStorage.clear(); 
     sessionStorage.clear();
-    
-    // 2. Custom Alert එක පෙන්වා, එහි OK එබූ පසු index.html වෙත යොමු කිරීම
-    // මෙහිදී පණිවිඩය සහ යන පිටුව (index.html) නිවැරදිව ලබා දී ඇත.
     showCustomAlert("Logged out and all your data has been cleared successfully!", "index.html");
 }
