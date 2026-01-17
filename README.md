@@ -15,7 +15,7 @@ Task Manager Pro is a robust, professional-grade Task Management Application dev
 
 **DevOps: GitHub Actions (CI/CD)
 
-**Deployment:  Netlify
+**Deployment: Netlify
 
 **Version Control: Git with Branching Strategy
 
