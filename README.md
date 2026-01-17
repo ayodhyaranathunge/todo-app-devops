@@ -4,10 +4,11 @@ Student 1: R.M.Ayodhya Poojani - ITBNM-2313-0056 - Role: DevOps Engineer
 Student 2: Prasadika Bandara - ITBNM-2313-0006 - Role: Full Stack Developer
 
 // Project Description
+
 Task Manager Pro is a robust, professional-grade Task Management Application developed to optimize daily productivity. The application integrates a dynamic interactive calendar, real-time task filtering, and persistent data synchronization for user profiles and images using LocalStorage. Beyond its core functionality, the project showcases an industry-standard DevOps architecture, featuring a multi-branch Git strategy, automated CI/CD pipelines via GitHub Actions, and seamless cloud deployment. It bridges the gap between sophisticated frontend design and automated software delivery workflows.
 
 // Live Deployment
-🔗 Live URL: [ඔබේ Vercel/Netlify Link එක මෙතැනට පේස්ට් කරන්න]
+🔗 Live URL: https://singular-sherbet-87d0f6.netlify.app/
 
 // Technologies Used
 **Frontend: HTML5, CSS3, JavaScript (ES6+)
@@ -69,10 +70,10 @@ Prerequisites
 
 
 #. Clone the repository
-git clone https://github.com/[your-username]/[repo-name].git
+git clone https://github.com/[ayodhyaranathunge]/[todo-app-deveops.].git
 
 #. Navigate to project directory
-cd [repo-name]
+cd [todo-app-devops]
 
 #.Open the application
 #.Since this is a static site, you can simply open index.html 
