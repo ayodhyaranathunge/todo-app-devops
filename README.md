@@ -90,3 +90,61 @@ Our CI/CD pipeline works as follows:
 CI Pipeline: Passing
 
 Production Deploy: Active
+
+📄 Project Development – Issues & Solutions
+ 1.Issue: Changes Not Showing on Netlify
+
+Problem:
+Even after updating the code, the deployed website on Netlify showed the old output.
+
+Reason:
+The updated code was not pushed to the main branch, which Netlify uses for deployment.
+
+Solution:
+All changes were committed and pushed to the main branch using Git.
+After pushing, Netlify automatically redeployed the site.
+
+2.Issue: Working on the Wrong Git Branch
+
+Problem:
+Sometimes changes were made in a feature branch, but Netlify did not update.
+
+Reason:
+Netlify only tracks the main branch, not feature branches.
+
+Solution:
+Changes were merged into the main branch before pushing.
+Branch status was always checked using git branch.
+
+3.Issue: Git Push Rejected Error
+
+Problem:
+Git showed a “non-fast-forward” error when pushing changes.
+
+Reason:
+The local branch was behind the remote repository.
+
+Solution:
+The latest changes were pulled from the remote repository before pushing again.
+
+4.Issue: Terminal Commands Not Working
+
+Problem:
+Some Git commands did not work in the terminal.
+
+Reason:
+The terminal was not opened in the correct project folder or Git Bash was not used.
+
+Solution:
+The terminal was opened inside VS Code and the correct folder was confirmed using ls or dir.
+
+5.Issue: Browser Cache Showing Old Content
+
+Problem:
+The website showed old content even after successful deployment.
+
+Reason:
+The browser cache stored the old version of the site.
+
+Solution:
+A hard refresh (Ctrl + Shift + R) or incognito mode was used to view the latest version.
