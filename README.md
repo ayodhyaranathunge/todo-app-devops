@@ -162,13 +162,3 @@ The terminal was not opened in the correct project folder or Git Bash was not us
 Solution:
 The terminal was opened inside VS Code and the correct folder was confirmed using ls or dir.
 
-5.Issue: Browser Cache Showing Old Content
-
-Problem:
-The website showed old content even after successful deployment.
-
-Reason:
-The browser cache stored the old version of the site.
-
-Solution:
-A hard refresh (Ctrl + Shift + R) or incognito mode was used to view the latest version.
