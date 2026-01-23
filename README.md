@@ -5,7 +5,7 @@ Student 2: Prasadika Bandara - ITBNM-2313-0006 - Role: Full Stack Developer
 
 // Project Description
 
-Task Manager Pro is a robust, professional-grade Task Management Application developed to optimize daily productivity. The application integrates a dynamic interactive calendar, real-time task filtering, and persistent data synchronization for user profiles and images using LocalStorage. Beyond its core functionality, the project showcases an industry-standard DevOps architecture, featuring a multi-branch Git strategy, automated CI/CD pipelines via GitHub Actions, and seamless cloud deployment. It bridges the gap between sophisticated frontend design and automated software delivery workflows.
+Task Manager Pro is a robust, professional-grade Task Management Application developed to optimize daily productivity. The applicatiogit n integrates a dynamic interactive calendar, real-time task filtering, and persistent data synchronization for user profiles and images using LocalStorage. Beyond its core functionality, the project showcases an industry-standard DevOps architecture, featuring a multi-branch Git strategy, automated CI/CD pipelines via GitHub Actions, and seamless cloud deployment. It bridges the gap between sophisticated frontend design and automated software delivery workflows.
 
 // Live Deployment
 🔗 Live URL: https://singular-sherbet-87d0f6.netlify.app/
@@ -90,6 +90,30 @@ Our CI/CD pipeline works as follows:
 CI Pipeline: Passing
 
 Production Deploy: Active
+
+
+Real-World Problem & Solution
+
+1. The Real-World Problem
+
+In today's fast-paced world, people often struggle with "Information Overload" and a lack of organized structure in their daily lives. Many individuals find it difficult to balance their professional tasks with personal financial management, leading to:
+
+* Reduced Productivity: Forgetting deadlines and failing to prioritize important tasks.
+
+* Financial Stress: Losing track of daily expenses and failing to meet long-term savings     goals.
+
+* Mental Clutter: The stress of manually remembering numerous small details without a centralized digital assistant.
+
+2. How Our App Solves This Problem
+Our Expense Tracker & To-Do App provides a unified digital solution to bridge the gap between task management and financial planning:
+
+Integrated Productivity: By combining a calendar-based Task Manager with a To-Do list, users can visualize their schedule and ensure no deadline is missed.
+
+Visual Financial Insights: Instead of just recording numbers, the app uses dynamic charts to show users exactly where their money is going, making it easier to identify and cut unnecessary costs.
+
+Goal-Driven Savings: The Savings Planner empowers users to set specific financial targets (like buying a laptop) and provides a visual progress bar, turning abstract goals into achievable milestones.
+
+Real-Time Collaboration & Accessibility: Built with a modern DevOps pipeline, the app ensures that user data is always synchronized and the latest features are deployed instantly for a seamless experience across all devices.
 
 📄 Project Development – Issues & Solutions
  1.Issue: Changes Not Showing on Netlify
