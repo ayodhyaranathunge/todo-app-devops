@@ -1,4 +1,4 @@
-/* --- Base & Reset Styles (Maintain) --- */
+/*  Base & Reset Styles (Maintain)  */
 * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 body {
     background-color: #f4f7fc;
@@ -15,7 +15,7 @@ body {
     position: relative; 
 }
 
-/* --- Navigation & Header (Maintain) --- */
+/* Navigation & Header (Maintain)  */
 .top-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
 .nav-right { display: flex; align-items: center; gap: 10px; }
 .avatars-group { display: flex; align-items: center; }
@@ -27,13 +27,13 @@ body {
 .month-text { color: #3498db; font-size: 12px; margin: 0; font-weight: 600; }
 .current-date { font-size: 24px; margin: 5px 0 0 0; color: #2d3436; }
 
-/* --- HOME PAGE (Remade with New Styles) --- */
+/*  HOME PAGE (Remade with New Styles)  */
 
 /* Header Styling - Centered */
-/* --- Home Header Remake (Matching Settings Page Size) --- */
+/* Home Header Remake (Matching Settings Page Size) */
 .home-header {
-    background:  #e3f2fd; /* Light Blue */
-    padding: 30px 25px; /* උස වැඩිකර ඇත (Settings page එකට සමානයි) */
+    background:  #e3f2fd; 
+    padding: 30px 25px; 
     border-radius: 0 0 30px 30px;
     margin: -25px -25px 20px -25px;
     display: flex;
@@ -43,7 +43,7 @@ body {
     z-index: 5;
 }
 
-/* Header එකේ Title එක මැදට ගැනීම */
+/* Centering the Title in the Header */
 .do-it-now {
     flex: 1;
     text-align: center;
@@ -52,10 +52,10 @@ body {
     font-size: 22px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin: 0; /* අනවශ්‍ය margin ඉවත් කිරීම */
+    margin: 0; 
 }
 
-/* Notification Bell එක දකුණු කෙළවරට ස්ථාවර කිරීම */
+/*Fixing the Notification Bell to the right corner */
 .notif-icon-top {
     cursor: pointer;
     font-size: 22px;
@@ -67,7 +67,7 @@ body {
     transform: scale(1.1);
 }
 
-/* Menu Button එක වම් පස තබා ගැනීම */
+/* Keeping the Menu Button on the left*/
 .menu-btn {
     font-size: 24px;
     cursor: pointer;
@@ -144,7 +144,7 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Scroll Area & Footer (Maintain) */
+/*Scroll Area & Footer (Maintain) */
 .home-task-list {
     flex: 1;
     overflow-y: auto;
@@ -166,7 +166,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #0101b6; /* Dark Blue */
+    background: #0101b6; 
     display: flex;
     justify-content: space-around;
     padding: 12px 0;
@@ -187,14 +187,14 @@ body {
 .nav-icon { font-size: 20px; }
 .nav-text { font-size: 10px; margin-top: 4px; }
 
-/* --- Login & Signup Styles --- */
+/*  Login & Signup Styles */
 .login-screen, .signup-screen { position: relative; background: #fff; justify-content: center; overflow: hidden; display: flex; flex-direction: column; }
 .login-decor .circle-1 { position: absolute; width: 250px; height: 250px; background: #3c40c6; border-radius: 50%; top: -80px; left: -50px; opacity: 0.1; }
 .login-decor .circle-2 { position: absolute; width: 150px; height: 150px; background: #ff7675; border-radius: 50%; bottom: -30px; right: -30px; opacity: 0.1; }
 .input-group input { width: 100%; padding: 15px 20px; border: 1px solid #f0f0f0; border-radius: 15px; background: #f9f9f9; outline: none; }
 .login-btn { background: #3c40c6; color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 600; margin-top: 20px; cursor: pointer; }
 
-/* --- Settings Page Styles --- */
+/*  Settings Page Styles  */
 /* Settings Page Specific */
 .user-info-card {
     background: #f8faff; padding: 20px; border-radius: 20px;
@@ -227,9 +227,9 @@ input:checked + .slider:before { transform: translateX(21px); }
 
 
 
-/* ========================================== */
-/* SETTINGS PAGE – BACKGROUND DECOR CIRCLES   */
-/* ========================================== */
+
+/* SETTING PAGE – BACKGROUND DECOR CIRCLES */  
+
 
 .settings-screen .login-decor .circle-1 {
     position: absolute;
@@ -256,11 +256,11 @@ input:checked + .slider:before { transform: translateX(21px); }
 }
 
 
-/* ========================================== */
-/* NEW: Pinterest Calendar & Task Page Styles */
-/* ========================================== */
 
-/* --- 1. Manage Tasks Screen Background (Settings Style) --- */
+/* NEW: Pinterest Calendar & Task Page Styles */
+
+
+/*  1. Manage Tasks Screen Background (Settings Style)  */
 .tasks-screen {
     position: relative;
     overflow: hidden;
@@ -277,7 +277,7 @@ input:checked + .slider:before { transform: translateX(21px); }
     border-radius: 50%; bottom: 100px; right: -50px; opacity: 0.05; z-index: 1;
 }
 
-/* --- 2. Space & Layout Management --- */
+/*  2. Space & Layout Management  */
 .tasks-content {
     position: relative;
     z-index: 5;
@@ -296,7 +296,7 @@ input:checked + .slider:before { transform: translateX(21px); }
     letter-spacing: 1px;
 }
 
-/* --- 3. Calendar Box Styles --- */
+/*  3. Calendar Box Styles */
 .calendar-box {
     background: #ffffff; 
     border-radius: 25px; 
@@ -328,7 +328,7 @@ input:checked + .slider:before { transform: translateX(21px); }
 .selected-date-label { font-size: 12px; color: #3498db; margin: 15px 0 10px 0; font-weight: 600; }
 
 
-/* --- 4. Task Row & Cards Styles --- */
+/*  4. Task Row & Cards Styles  */
 .task-row-v2 {
     background: white; padding: 16px; border-radius: 25px;
     margin-bottom: 12px; display: flex; flex-direction: column;
@@ -345,7 +345,7 @@ input:checked + .slider:before { transform: translateX(21px); }
 .task-row-v2.done h4::before { content: "✅ "; }
 .task-row-v2.done h4 { text-decoration: line-through; color: #a0aec0; }
 
-/* --- 5. Filtering & Scrolling --- */
+/* 5. Filtering & Scrolling  */
 .filter-container { display: flex; gap: 10px; margin: 15px 0; }
 .filter-tab { border: none; padding: 8px 18px; border-radius: 12px; font-weight: 600; cursor: pointer; transition: 0.3s; }
 
@@ -375,9 +375,8 @@ input:checked + .slider:before { transform: translateX(21px); }
 
 /*profile page*/
 
-/* ========================================== */
-/* COMBINED EDIT PROFILE STYLES               */
-/* ========================================== */
+
+/* COMBINED EDIT PROFILE STYLES */
 
 /* 1. Background Decoration Circles (Bola) */
 .edit-screen .login-decor .circle-1 {
@@ -388,7 +387,7 @@ input:checked + .slider:before { transform: translateX(21px); }
     border-radius: 50%;
     top: -50px;
     left: -80px;
-    opacity: 0.05; /* පසුබිමට බාධාවක් නොවන සේ ඉතා අඩුවෙන් පෙන්වීමට */
+    opacity: 0.05; 
     z-index: 1;
 }
 
@@ -406,22 +405,22 @@ input:checked + .slider:before { transform: translateX(21px); }
 
 /* 2. Light Blue Header Bar */
 .header-bar-v2 {
-    background-color: #e3f2fd !important; /* Light Blue */
+    background-color: #e3f2fd !important; 
     display: flex;
     align-items: center;
     padding: 30px 25px;
-    margin: -25px -25px 25px -25px; /* Frame padding එකට ගැලපීමට */
+    margin: -25px -25px 25px -25px; /* To adjust the frame padding */
     border-bottom: 1px solid #bbdefb;
     border-radius: 0 0 20px 20px;
     position: relative;
-    z-index: 5; /* Circles වලට උඩින් පෙනීමට */
+    z-index: 5; /* To see above the circles */
 }
 
 .back-btn-header {
     font-size: 26px;
     cursor: pointer;
     margin-right: 15px;
-    color: #3c40c6; /* තද නිල් පාට Back Arrow */
+    color: #3c40c6; /* Dark blue Back Arrow */
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -445,7 +444,7 @@ input:checked + .slider:before { transform: translateX(21px); }
 }
 
 .small-avatar-circle {
-    width: 80px; /* කුඩා කළ ප්‍රමාණය */
+    width: 80px; 
     height: 80px;
     background: #f0f2f5;
     border: 2px dashed #cbd5e0;
@@ -567,7 +566,7 @@ input:checked + .slider:before { transform: translateX(21px); }
 }
 
 .confirm-logout-btn {
-    background: #ff7675; /* රතු පැහැයට හුරු පාටක් */
+    background: #ff7675; 
     color: white;
     border: none;
     padding: 15px;
@@ -616,7 +615,7 @@ input:checked + .slider:before { transform: translateX(21px); }
 .notification-list {
     display: flex;
     flex-direction: column;
-    gap: 1px; /* Cards වෙන් කරන රේඛාව සඳහා */
+    gap: 1px; /* For the line separating cards */
     background: #e2e8f0;
     border-radius: 15px;
     overflow: hidden;
@@ -696,7 +695,7 @@ input:checked + .slider:before { transform: translateX(21px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Tasks සහ අනෙකුත් cards වලට අදාළව */
+/* Regarding tasks and other cards */
 body.dark-theme .task-row-v2, 
 body.dark-theme .calendar-box,
 body.dark-theme .welcome-box {
@@ -705,7 +704,7 @@ body.dark-theme .welcome-box {
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 /*security
-/* --- Security Page Specific Styles --- */
+/* Security Page Specific Styles  */
 .security-screen { background: #fdfdfd; }
 
 .security-content {
@@ -772,17 +771,17 @@ body.dark-theme .welcome-box {
     color: white;
 }
 
-/* 9. බ්‍රවුසරයේ පිටත පසුබිම වෙනස් නොකිරීමට */
+/* 9. To avoid changing the background outside the browser */
 body {
     background-color: #f4f7fc !important; 
 }
 
 /*setting page header*/
 
-/* --- Settings Page Header Fix (Matching Home & Task) --- */
+/*  Settings Page Header Fix (Matching Home & Task)  */
 .settings-screen .header-bar-v2 {
-    background: #e3f2fd; /* Light Blue for Light Mode */
-    padding: 35px 25px; /* Task Page එකට සමාන උස */
+    background: #e3f2fd; 
+    padding: 35px 25px; 
     border-radius: 0 0 30px 30px;
     margin: -25px -25px 25px -25px;
     display: flex;
@@ -793,7 +792,7 @@ body {
     z-index: 5;
 }
 
-/* Settings Title එක මැදට ගැනීම */
+/* Centering the Settings Title */
 .settings-screen .header-title {
     flex: 1;
     text-align: center;
@@ -805,7 +804,7 @@ body {
     margin: 0;
 }
 
-/* Back Button සහ Notification අයිකනය */
+/* Back Button and Notification Icon */
 .settings-screen .back-btn-header, 
 .settings-screen .notif-icon-top {
     color: #3c40c6;
@@ -815,27 +814,25 @@ body {
 }
 
 
-/* --- Notification Highlight Effect --- */
+/*  Notification Highlight Effect  */
 .highlight-task {
-    border: 2px solid #3c40c6 !important; /* තද නිල් පාට රේඛාවක් */
-    box-shadow: 0 0 15px rgba(60, 64, 198, 0.3) !important; /* කුඩා නිල් පාට සෙවනැල්ලක් */
-    transform: scale(1.02); /* මඳක් විශාල වී පෙනීමට */
+    border: 2px solid #3c40c6 !important; 
+    box-shadow: 0 0 15px rgba(60, 64, 198, 0.3) !important; 
+    transform: scale(1.02); 
     transition: 0.5s ease;
 }
 
 /*darkmode*/
 
-/* ============================================================
-   FINAL DARK MODE IMPLEMENTATION (FRAME-ONLY & TEXT)
-   ============================================================ */
+/* FINAL DARK MODE IMPLEMENTATION (FRAME-ONLY & TEXT) */
 
-/* 1. ප්‍රධාන රාමුව අඳුරු කිරීම - මෙය මුළු ඇප් එකටම බලපායි */
+/* 1. Dimming the main frame - this affects the entire app */
 .mobile-frame.dark-theme {
     background-color: #1a1a2e !important;
     color: #ffffff !important;
 }
 
-/* 2. සියලුම Headers, Labels සහ Paragraphs සුදු පැහැයට හැරවීම */
+/* 2.Turn all headers, labels, and paragraphs white */
 .mobile-frame.dark-theme h2,
 .mobile-frame.dark-theme h3,
 .mobile-frame.dark-theme h4,
@@ -848,7 +845,7 @@ body {
     color: #ffffff !important;
 }
 
-/* 3. Cards සහ අනෙකුත් අංග (Settings, Tasks, Calendar) වල වර්ණ */
+/* 3. Colors of Cards and other elements (Settings, Tasks, Calendar) */
 .mobile-frame.dark-theme .setting-item,
 .mobile-frame.dark-theme .task-row-v2, 
 .mobile-frame.dark-theme .calendar-box,
@@ -860,7 +857,7 @@ body {
     color: #ffffff !important;
 }
 
-/* 4. Headers සහ Footers අඳුරු කිරීම */
+/* 4. Dimming Headers and Footers */
 .mobile-frame.dark-theme .header-bar-v2,
 .mobile-frame.dark-theme .home-header,
 .mobile-frame.dark-theme .footer-nav-square {
@@ -868,7 +865,7 @@ body {
     border-color: #16213e !important;
 }
 
-/* 5. Input Fields සහ Selection Boxes */
+/* 5. Input Fields and Selection Boxes */
 .mobile-frame.dark-theme input,
 .mobile-frame.dark-theme select,
 .mobile-frame.dark-theme textarea {
@@ -877,61 +874,61 @@ body {
     border: 1px solid #444 !important;
 }
 
-/* 6. Calendar එකේ දින (Dates) වල වර්ණය */
+/* 6. Color of dates in the calendar */
 .mobile-frame.dark-theme .day-node {
     color: #ffffff !important;
 }
 .mobile-frame.dark-theme .day-node.active-day {
-    color: #000000 !important; /* තේරූ දිනය පැහැදිලිව පෙන්වීමට */
+    color: #000000 !important; 
 }
 
 /*circle color*/
 
-/* --- Dark Mode Background Circles Fix --- */
+/*  Dark Mode Background Circles Fix */
 
-/* Circle 1 - තද නිල් පාට බෝලය */
+/* Circle 1 */
 .mobile-frame.dark-theme .circle-1, 
 .mobile-frame.dark-theme .login-decor .circle-1 {
-    background: #3c40c6 !important; /* මුල් වර්ණයම පවත්වා ගනී */
-    opacity: 0.2 !important; /* පෙනෙන ප්‍රමාණය (Opacity) 0.05 සිට 0.2 දක්වා වැඩි කළා */
-    filter: brightness(1.2); /* මඳක් දීප්තිමත් කළා */
+    background: #3c40c6 !important; 
+    opacity: 0.2 !important; 
+    filter: brightness(1.2);
 }
 
-/* Circle 2 - රෝස/රතු පාට බෝලය */
+/* Circle 2  */
 .mobile-frame.dark-theme .circle-2, 
 .mobile-frame.dark-theme .login-decor .circle-2 {
     background: #ff7675 !important;
-    opacity: 0.2 !important; /* පෙනෙන ප්‍රමාණය වැඩි කළා */
+    opacity: 0.2 !important; 
     filter: brightness(1.2);
 }
 
 /*allert box*/
 
-/* Modal එක සාමාන්‍ය වෙලාවට සැඟවීමට සහ Layout එකට බාධා නොකිරීමට */
+/* To hide the modal normally and not interfere with the layout */
 .modal-overlay {
-    position: fixed; /* absolute වෙනුවට fixed භාවිතා කරන්න */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6); /* පසුබිම මඳක් අඳුරු කිරීමට */
-    display: none; /* පෙන්වීමට අවශ්‍ය වූ විට පමණක් flex වේ */
+    background: rgba(0,0,0,0.6); 
+    display: none; 
     align-items: center;
     justify-content: center;
-    z-index: 9999; /* ඕනෑම දෙයකට ඉහළින් පෙනීමට */
+    z-index: 9999; 
 }
 
 .modal-box {
     background: white;
     padding: 30px;
     border-radius: 20px;
-    width: 280px; /* පළල මඳක් වැඩි කළා */
+    width: 280px; 
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    animation: popIn 0.3s ease; /* මඳක් පිම්බී එන පෙනුමක් ලබා දීමට */
+    animation: popIn 0.3s ease; 
 }
 
-/* Modal එක එන විට ඇතිවන animation එක */
+/* The animation that occurs when the modal appears */
 @keyframes popIn {
     from { transform: scale(0.8); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
@@ -953,7 +950,7 @@ body {
 
 .modal-box button:hover { background: #2d31a3; }
 
-/* Dark Mode Support (ඔබේ ඇප් එකේ dark-theme එකට ගැලපෙන සේ) */
+/* Dark Mode Support (to match your app's dark-theme) */
 .mobile-frame.dark-theme .modal-box { 
     background: #16213e !important; 
     color: white !important; 

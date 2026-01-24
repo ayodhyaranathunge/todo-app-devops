@@ -1,14 +1,10 @@
-// ==========================================
 // 1. Global Variables & Initial Data
-// ==========================================
 let selectedDate = new Date();
 let currentViewDate = new Date();
 let tasks = JSON.parse(localStorage.getItem('myTasks')) || [];
 let currentFilter = 'all'; 
 
-// ==========================================
 // 2. Calendar Logic (Tasks Page)
-// ==========================================
 function renderCalendar() {
     const daysContainer = document.getElementById('calendar-days');
     const display = document.getElementById('month-year-display');
@@ -59,9 +55,7 @@ if (document.getElementById('prev-month')) {
     };
 }
 
-// ==========================================
 // 3. Task Management (Add, Toggle, Delete, Render)
-// ==========================================
 function saveTask() {
     const input = document.getElementById('todo-input');
     if (!input || input.value.trim() === "") return;
@@ -145,16 +139,13 @@ function updateStorageAndUI() {
     if (document.getElementById('homeUserName')) updateHomeUI();
 }
 
-// ==========================================
-// 4. Home UI & Side Menu
-// ==========================================
+// 4. Home UI & Side 
 function updateHomeUI() {
     const profile = JSON.parse(localStorage.getItem('userProfile'));
     if (profile && document.getElementById('homeUserName')) {
         document.getElementById('homeUserName').innerText = `Hello, ${profile.name}!`;
     }
 
-    // Home පිටුවේ පින්තූරය පෙන්වීම
     const homeImg = document.getElementById('homeProfileImg');
     const savedImg = localStorage.getItem('profileImage');
     if (homeImg && savedImg) homeImg.src = savedImg;
@@ -185,13 +176,10 @@ function toggleSidebar() {
     }
 }
 
-// ==========================================
 // 5. Settings, Profile Data & Dark Mode
-// ==========================================
-// Settings පිටුවට දත්ත ලබා දෙන ශ්‍රිතය යාවත්කාලීන කරන ලදී
 function loadSettingsData() {
     const savedProfile = JSON.parse(localStorage.getItem('userProfile'));
-    const savedImg = localStorage.getItem('profileImage'); // සුරකින ලද පින්තූරය ලබා ගැනීම
+    const savedImg = localStorage.getItem('profileImage'); 
 
     if (savedProfile) {
         if (document.getElementById('setUserName')) 
@@ -199,18 +187,19 @@ function loadSettingsData() {
         if (document.getElementById('setUserEmail')) 
             document.getElementById('setUserEmail').innerText = savedProfile.email;
         
-        if (document.getElementById('userNameInput')) document.getElementById('userNameInput').value = savedProfile.name;
-        if (document.getElementById('userEmailInput')) document.getElementById('userEmailInput').value = savedProfile.email;
+        if (document.getElementById('userNameInput')) 
+            document.getElementById('userNameInput').value = savedProfile.name;
+        if (document.getElementById('userEmailInput')) 
+            document.getElementById('userEmailInput').value = savedProfile.email;
     }
 
-    // Settings පිටුවේ පින්තූරය පෙන්වීම
     const setImgEl = document.getElementById('setProfileImg');
     if (setImgEl && savedImg) {
         setImgEl.src = savedImg;
     }
 }
 
-// Profile Photo එක තෝරාගත් විට එය සුරැකීමේ ක්‍රියාවලිය
+// 6. Profile Image Upload
 function setupImageUpload() {
     const imgInput = document.getElementById('imgInput');
     if (imgInput) {
@@ -227,17 +216,14 @@ function setupImageUpload() {
                     if (plusIcon) plusIcon.style.display = 'none';
                 }
                 localStorage.setItem('profileImage', reader.result);
-                updateHomeUI(); // වහාම Home පිටුවේ පින්තූරය යාවත්කාලීන කිරීමට
+                updateHomeUI(); 
             }
 
-            if (file) {
-                reader.readAsDataURL(file);
-            }
+            if (file) reader.readAsDataURL(file);
         }
     }
 }
 
-// සුරකින ලද පින්තූරය Load කිරීම
 function loadProfileImage() {
     const savedImg = localStorage.getItem('profileImage');
     const preview = document.getElementById('profilePreview');
@@ -250,6 +236,7 @@ function loadProfileImage() {
     }
 }
 
+// 7. Save Profile
 window.saveUserProfile = (event) => {
     if(event) event.preventDefault();
     
@@ -265,7 +252,9 @@ window.saveUserProfile = (event) => {
     localStorage.setItem('userProfile', JSON.stringify(profile));
     
     updateHomeUI();
-    showCustomAlert("Profile Updated Successfully!", "index.html"); 
+    loadSettingsData();
+    
+    showCustomAlert("Profile Updated Successfully!", null);
 };
 
 window.toggleDarkMode = () => {
@@ -275,9 +264,7 @@ window.toggleDarkMode = () => {
     localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
 };
 
-// ==========================================
-// 6. Notifications Logic
-// ==========================================
+// 8. Notifications Logic
 function renderNotifications() {
     const notifContainer = document.getElementById('notif-container');
     if (!notifContainer) return;
@@ -331,9 +318,7 @@ function calculateTimeAgo(ts) {
     return `${Math.floor(hr / 24)}d ago`;
 }
 
-// ==========================================
-// 7. Security Page Buttons (Updated with Custom Alert)
-// ==========================================
+// 9. Security Buttons
 function setupSecurityButtons() {
     const securityButtons = document.querySelectorAll('.sec-action-btn');
     securityButtons.forEach(button => {
@@ -353,9 +338,7 @@ function setupSecurityButtons() {
     });
 }
 
-// ==========================================
-// 8. Custom Modal Alert Logic
-// ==========================================
+// 10. Custom Modal Alert
 function showCustomAlert(message, redirectUrl = null) {
     const modal = document.getElementById('customAlert');
     if (!modal) return;
@@ -372,9 +355,7 @@ function closeAlert() {
     }
 }
 
-// ==========================================
-// 9. Initialization (DOMContentLoaded) - UPDATED
-// ==========================================
+// 11. DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
     const darkModeStatus = localStorage.getItem('darkMode');
     const appFrame = document.getElementById('app-frame');
@@ -397,8 +378,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHomeUI();
     loadSettingsData();
     renderNotifications();
-    setupImageUpload(); // පින්තූර Upload කිරීමේ හැකියාව සක්‍රීය කිරීම
-    loadProfileImage(); // සුරකින ලද පින්තූරය පෙන්වීම
+    setupImageUpload();
+    loadProfileImage();
 
     if (document.querySelectorAll('.sec-action-btn').length > 0) {
         setupSecurityButtons();
@@ -416,11 +397,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// 12. Logout
 function processLogout() {
-    if(confirm("Are you sure you want to logout? This will clear your data.")) {
-        localStorage.clear(); 
-        sessionStorage.clear();
-        alert("Logged out and data cleared!");
-        window.location.href = "Signup.html";
-    }
+    localStorage.clear(); 
+    sessionStorage.clear();
+    showCustomAlert("Logged out and all your data has been cleared successfully!", "index.html");
 }
