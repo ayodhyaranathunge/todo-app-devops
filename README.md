@@ -60,7 +60,7 @@ feature/*: Individual branches for specific feature development .
 
 //Installation
 
-#. Clone the repository git clone https://github.com/[ayodhyaranathunge]/[todo-app-deveops.].git
+#. Clone the repository git clone https:https://github.com/ayodhyaranathunge/todo-app-devops.git
 
 #. Navigate to project directory cd [todo-app-devops]
 
