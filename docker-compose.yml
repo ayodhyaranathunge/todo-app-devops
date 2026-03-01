@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  frontend:
+    # Build configuration pointing to our Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: todo-app-devops:latest
+    container_name: todo-app-container
+    
+    # Map host port 8080 to container port 8080
+    ports:
+      - "8080:8080"
+    
+    # Service isolation using a custom bridge network
+    networks:
+      - todo-network
+      
+    
+    # Restart policy for high availability
+    restart: unless-stopped
+
+   
+    # Performance Optimization: Resource Allocation
+    # Prevents this container from consuming all host resources (CPU/Memory starvation)
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'        
+          memory: 128M      
+        reservations:
+          cpus: '0.1'       
+          memory: 64M        
+
+
+
+# Custom network for better isolation compared to the default bridge network
+
+networks:
+  todo-network:
+    driver: bridge
+    name: todo-app-network
